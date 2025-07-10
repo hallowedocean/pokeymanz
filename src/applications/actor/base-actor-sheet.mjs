@@ -4,13 +4,17 @@ import * as SYSTEM_CONST from "../../constants.mjs";
 const { ActorSheetV2 } = foundry.applications.sheets;
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
+/**
+ * The Base Actor application.
+ * @extends foundry.applications.sheets.ActorSheetV2
+ * @mixes HandlebarsApplication
+ */
 export default class BaseActorSheet extends HandlebarsApplicationMixin(
   ActorSheetV2,
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["pokeymanz", "sheet", "actor"],
     actions: {
-      setImg: BaseActorSheet._setImg,
       renderIP: BaseActorSheet._renderIP,
       toggleEffect: BaseActorSheet._toggleEffect,
       createDoc: BaseActorSheet._createDoc,
@@ -271,36 +275,6 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   /* -------------------------------------------- */
 
   /**
-   * Handle changing a Document's image
-   *
-   * @this BaseActorSheet
-   * @param {PointerEvent} event - The originating click event
-   * @param {HTMLElement} target - The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static _setImg(event, target) {
-    const attr = target.dataset.edit;
-    const current = foundry.utils.getProperty(this.document._source, attr);
-    const { img } =
-      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
-      {};
-    const fp = new FilePicker({
-      current,
-      type: "image",
-      redirectToRoot: img ? [img] : [],
-      callback: (path) => {
-        target.src = path;
-        if (this.options.form.submitOnChange) {
-          this.document.update({ [attr]: path });
-        }
-      },
-      top: this.position.top + 40,
-      left: this.position.left + 10,
-    });
-    return fp.browse();
-  }
-
-  /**
    * Handle render ImagePopout of a image
    *
    * @this BaseActorSheet
@@ -313,12 +287,15 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
     const src = target.src ?? target.querySelector("img")?.src;
     if (!src) return;
 
-    const ip = new ImagePopout(src, {
-      title: this.document.name,
+    const ip = new foundry.applications.apps.ImagePopout({
+      window: {
+        title: this.document.name,
+      },
       uuid: this.document.uuid,
+      src,
     });
 
-    ip.render(true);
+    ip.render({ force: true });
   }
 
   /**

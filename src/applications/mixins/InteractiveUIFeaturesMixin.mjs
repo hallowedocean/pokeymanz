@@ -1,6 +1,10 @@
 import Accordion from "../accordion.mjs";
 import * as SYSTEM_CONST from "../../constants.mjs";
-
+/**
+ * 
+ * @param {foundry.applications.api.ApplicationV2} BaseApplication 
+ * @returns 
+ */
 export default function InteractiveUIFeaturesMixin(BaseApplication) {
   class InteractiveApplication extends BaseApplication {
 
@@ -33,7 +37,7 @@ export default function InteractiveUIFeaturesMixin(BaseApplication) {
     _contextMenus;
 
     /**
-     * @type {Array<Partial<import("../../../v12/resources/app/client-esm/applications/_types.mjs").ApplicationTab>>}
+     * @type {foundry.applications.types.ApplicationTab[]>}
      */
     static TABS = [];
 
@@ -60,31 +64,10 @@ export default function InteractiveUIFeaturesMixin(BaseApplication) {
     async _onRender(context, options) {
       await super._onRender(context, options);
 
-      /**
-       * ACCORDION
-       */
       for (const accordion of this._accordions) {
         accordion._saveCollapsedState();
         accordion.bind(this.element);
       }
-
-      /**
-       * DragDrop
-       */
-      const DragDropCls = DragDrop.implementation ?? DragDrop;
-
-      new DragDropCls({
-        dragSelector: ".draggable",
-        permissions: {
-          dragstart: this._canDragStart.bind(this),
-          drop: this._canDragDrop.bind(this),
-        },
-        callbacks: {
-          dragstart: this._onDragStart.bind(this),
-          dragover: this._onDragOver.bind(this),
-          drop: this._onDrop.bind(this),
-        },
-      }).bind(this.element);
     }
 
     /** @inheritDoc */
@@ -97,27 +80,18 @@ export default function InteractiveUIFeaturesMixin(BaseApplication) {
      * @returns {ContextMenu[]}
      */
     _createContextMenus() {
-      if (Array.isArray(this.options.contextMenus))
-        return this.options.contextMenus.map(
-          ({ selector, menuItems, options }) => {
-            if (game.release.generation >= 13)
-              return this._createContextMenu(Array.isArray(menuItems) ? () => menuItems : menuItems, selector, { ...options });
-            else
-              return ContextMenu.create(
-                this,
-                this.element,
-                selector,
-                menuItems(),
-                options,
-              );
-          },
-        );
-      else {
-        console.error(
-          `${SYSTEM_CONST.SYSTEM_NAME} | Error _createContextMenus | this.options.contextMenus should be a Array`,
-        );
+      if (!Array.isArray(this.options.contextMenus)) {
+        console.error(`${SYSTEM_CONST.SYSTEM_NAME} | Error _createContextMenus | this.options.contextMenus should be an Array`);
         return [];
       }
+
+      return this.options.contextMenus.map(({ selector, handler, options }) =>
+        this._createContextMenu(
+          handler,
+          selector,
+          { ...options },
+        ),
+      );
     }
 
     /** @override */
@@ -218,8 +192,7 @@ export default function InteractiveUIFeaturesMixin(BaseApplication) {
      * @protected
      */
     async _onDrop(event) {
-      const TextEditorCls = TextEditor.implementation ?? TextEditor;
-      const data = TextEditorCls.getDragEventData(event);
+      const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
       const actor = this.actor;
       const allowed = Hooks.call("pokeymanz.dropActorSheetData", actor, this, data);
       if (allowed === false) return;

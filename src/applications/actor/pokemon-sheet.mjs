@@ -24,7 +24,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     contextMenus: [
       {
         selector: ".move-menu",
-        menuItems: PokemonSheet._getMoveMenuItems(),
+        handler: PokemonSheet._getMoveMenuItems,
         options: {
           eventName: "click",
         },
@@ -151,7 +151,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
         ...move.toObject(),
         uuid: move.uuid,
         moveType: move.system.pokemonTypes.primary,
-        enrichDescription: await TextEditor.enrichHTML(
+        enrichDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
           move.system.notes.description,
           {
             secrets: move.isOwner,

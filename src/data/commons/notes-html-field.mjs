@@ -7,7 +7,7 @@ export default class NotesHTMLField extends foundry.data.fields.HTMLField {
     * @returns {Promise<string>} Enriched HTML content.
     */
   async enrich(value, document, options) {
-    return await TextEditor.enrichHTML(value, {
+    return await foundry.applications.ux.TextEditor.implementation.enrichHTML(value, {
       secrets: document.isOwner,
       relativeTo: document,
       rollData: document.getRollData?.() ?? {},
