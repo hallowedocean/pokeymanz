@@ -1,12 +1,13 @@
 export default class NotesHTMLField extends foundry.data.fields.HTMLField {
   /**
     * Enrich the HTML content of this field value.
-    * @param {string} value - The raw HTML value to enrich.
     * @param {Document} document 
-    * @param {EnrichmentOptions} [options] - Options passed to TextEditor.enrichHTML
+    * @param {import("@client/applications/ux/text-editor.mjs").EnrichmentOptions} [options] - Options passed to TextEditor.enrichHTML
     * @returns {Promise<string>} Enriched HTML content.
     */
-  async enrich(value, document, options) {
+  async enrich(document, options) {
+    const value = foundry.utils.getProperty(document, this.fieldPath);
+
     return await foundry.applications.ux.TextEditor.implementation.enrichHTML(value, {
       secrets: document.isOwner,
       relativeTo: document,

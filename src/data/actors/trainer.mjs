@@ -1,10 +1,8 @@
 import {
   pokemonTypeFields,
 } from "../common.mjs";
-
-import NotesHTMLField from "../commons/notes-html-field.mjs";
-
-import AttributeDiceField from "../commons/attribute-dice-field.mjs";
+import NotesHTMLField from "../fields/notes-html-field.mjs";
+import AttributeDiceField from "../fields/attribute-dice-field.mjs";
 
 export default class TrainerData extends foundry.abstract.TypeDataModel {
 
@@ -14,8 +12,12 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
    * Key information about this Actor subtype
    */
   static metadata = Object.freeze({
-    invalidItemTypes: ["move"],
+    attributes: ["heart", "fitness", "research", "tactics"],
   });
+
+  get metadata() {
+    return TrainerData.metadata;
+  }
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -56,6 +58,10 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
       notes: new fields.SchemaField({
         biography: new NotesHTMLField(),
       }),
+      team: new fields.SetField(new fields.DocumentUUIDField({ type: "Actor", embedded: false })),
+      propierties: new fields.SchemaField({
+        maxMoves: new fields.NumberField({ initial: 0, integer: true, min: 0, required: true }),
+      }),
     };
   }
 
@@ -81,8 +87,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
 
   /** @override */
   async _preCreate(data, options, user) {
-    const allowed = await super._preCreate(data, options, user);
-    if (allowed === false) return false;
+    if ((await super._preCreate(data, options, user)) === false) return false;
 
     this.parent.updateSource({
       prototypeToken: {

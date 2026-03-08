@@ -1,5 +1,5 @@
 import { pokemonTypeFields } from "../common.mjs";
-import NotesHTMLField from "../commons/notes-html-field.mjs";
+import NotesHTMLField from "../fields/notes-html-field.mjs";
 
 export default class PokemonData extends foundry.abstract.TypeDataModel {
 
@@ -54,6 +54,9 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       trainer: new fields.SchemaField({
         value: new fields.ForeignDocumentField(foundry.documents.BaseActor),
         inTeam: new fields.BooleanField({ initial: false }),
+      }),
+      propierties: new fields.SchemaField({
+        maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
       }),
     };
   }

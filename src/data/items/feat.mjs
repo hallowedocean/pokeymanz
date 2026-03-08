@@ -1,4 +1,4 @@
-import NotesHTMLField from "../commons/notes-html-field.mjs";
+import NotesHTMLField from "../fields/notes-html-field.mjs";
 
 export default class FeatData extends foundry.abstract.TypeDataModel {
 

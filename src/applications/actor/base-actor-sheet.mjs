@@ -76,8 +76,11 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   /*  Context Preparation                         */
   /* -------------------------------------------- */
 
+  /**@inheritdoc */
   async _prepareContext(options) {
+    const context = await super._prepareContext(options);
     return {
+      ... context,
       actor: this.document,
       config: CONFIG.POKEYMANZ,
       editable: this.isEditable,
@@ -89,6 +92,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
     };
   }
 
+  /**@inheritdoc */
   async _preparePartContext(partId, context, options) {
     switch (partId) {
       case "header":

@@ -1,13 +1,8 @@
-import {
-  pokemonTypeFields,
-} from "../common.mjs";
-
-import NotesHTMLField from "../commons/notes-html-field.mjs";
-
-import AttributeDiceField from "../commons/attribute-dice-field.mjs";
+import { pokemonTypeFields } from "../common.mjs";
+import NotesHTMLField from "../fields/notes-html-field.mjs";
+import AttributeDiceField from "../fields/attribute-dice-field.mjs";
 
 export default class MoveData extends foundry.abstract.TypeDataModel {
-
   static LOCALIZATION_PREFIXES = ["POKEYMANZ.BASE_ITEM"];
 
   static defineSchema() {
@@ -57,13 +52,10 @@ export default class MoveData extends foundry.abstract.TypeDataModel {
     if ((await super._preCreate(data, options, user)) === false) return false;
 
     const { actor } = this.parent;
+    if (!actor) return;
 
-    const isItemInvalidForActor =
-      actor?.system?.constructor?.metadata?.invalidItemTypes?.includes(
-        this.parent.type,
-      );
-    const hasReachedMaxMoves = actor?.itemTypes?.move?.length >= 4;
+    const hasReachedMaxMoves = actor.itemTypes.move.length >= actor.system.propierties.maxMoves;
 
-    if (isItemInvalidForActor || hasReachedMaxMoves) return false;
+    if (hasReachedMaxMoves) return false;
   }
 }
