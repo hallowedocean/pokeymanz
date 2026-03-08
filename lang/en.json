@@ -140,6 +140,7 @@
             "Computer": "PC",
             "EquipItem": "Equip {item}",
             "UnquipItem": "Unquip {item}",
+            "EditPokemon": "Edit Pokemon",
             "EditItem": "Edit Item",
             "UseItem": "Use {item}",
             "StatusesLabel": "Status Effects",

@@ -85,11 +85,8 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
   /* -------------------------------------------- */
 
   /**
-
- * @static
- * @returns {ContextMenuEntry[]} An array of context menu item objects.
- */
-
+   * @returns {ContextMenuEntry[]} An array of context menu item objects.
+   */
   static _getMoveMenuItems() {
     return [
       {
@@ -112,7 +109,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       },
     ];
   }
-
+  
   /* -------------------------------------------- */
   /*  Context Preparation                         */
   /* -------------------------------------------- */
@@ -151,14 +148,15 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
         ...move.toObject(),
         uuid: move.uuid,
         moveType: move.system.pokemonTypes.primary,
-        enrichDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-          move.system.notes.description,
-          {
-            secrets: move.isOwner,
-            rollData: move.getRollData(),
-            relativeTo: move,
-          },
-        ),
+        enrichDescription:
+          await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+            move.system.notes.description,
+            {
+              secrets: move.isOwner,
+              rollData: move.getRollData(),
+              relativeTo: move,
+            },
+          ),
       });
     }
     moves.sort((a, b) => a.sort - b.sort);
@@ -174,15 +172,17 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
   /* -------------------------------------------- */
 
   /**
- * Handler for make rolls
- *
- * @this PokemonSheet
- * @param {PointerEvent} event - The originating click event
- * @param {HTMLElement} target - The capturing HTML element which defined a [data-action]
- * @private
- */
+   * Handler for make rolls
+   *
+   * @this PokemonSheet
+   * @param {PointerEvent} event - The originating click event
+   * @param {HTMLElement} target - The capturing HTML element which defined a [data-action]
+   * @private
+   */
   static async _toggleTrainerTeam(event, target) {
     event.preventDefault();
-    await this.document.update({ "system.trainer.inTeam": !this.document.system.trainer.inTeam });
+    await this.document.update({
+      "system.trainer.inTeam": !this.document.system.trainer.inTeam,
+    });
   }
 }

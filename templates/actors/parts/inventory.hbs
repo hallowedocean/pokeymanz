@@ -50,8 +50,8 @@
         </div>
         <div class="item-controls flexrow">
           {{#if @root.editable}}
-          <a class="item-control" data-action="toggleGear" {{#if item.system.equipped}} data-tooltip="{{localize '
-            POKEYMANZ.Item.UnquipItem' item=item.name}}" {{else}} data-tooltip="{{localize 'POKEYMANZ.Item.EquipItem'
+          <a class="item-control" data-action="toggleGear" {{#if item.system.equipped}}
+            data-tooltip="{{localize 'POKEYMANZ.Item.UnquipItem' item=item.name}}" {{else}} data-tooltip="{{localize 'POKEYMANZ.Item.EquipItem'
             item=item.name}}" {{/if}}>
             <i class="{{ifThen item.system.equipped 'fa-solid' 'fa-regular' }} fa-backpack">
             </i>

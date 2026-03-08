@@ -28,8 +28,8 @@ class AttributeDiceData extends DataModel {
   }
 
   get formula() {
-    const formula = `${this._diceFormulaPart}${this._modFormulaPart}`;
-    return Roll.validate(formula) ? formula : `${this._diceFormulaPart}`;
+    const formula = [this._diceFormulaPart, this.modifier].join("+");
+    return foundry.dice.Roll.validate(formula) ? formula : `${this._diceFormulaPart}`;
   }
 
   get label() {
@@ -37,8 +37,6 @@ class AttributeDiceData extends DataModel {
   }
 
   _diceFormulaPart = `1d${this.faces}x`;
-
-  _modFormulaPart = this.modifier.signedString();
 
   get diceIcon() {
     return `${SYSTEM_CONST.ASSETS_PATH}/dice/d${this.faces}.svg`;

@@ -22,6 +22,15 @@ export default class TrainerSheet extends InteractiveUIFeaturesMixin(
       viewExternalActor: TrainerSheet._viewExternalActor,
       togglePokemonTeam: TrainerSheet._togglePokemonTeam,
     },
+    contextMenus: [
+      {
+        selector: ".pokemon-menu",
+        handler: TrainerSheet._getPokemonMenuItems,
+        options: {
+          eventName: "click",
+        },
+      },
+    ],
   };
 
   /** @override */
@@ -137,8 +146,8 @@ export default class TrainerSheet extends InteractiveUIFeaturesMixin(
     const pokemons = this.document.system.pokemons ?? [];
 
     return {
-      team: pokemons.filter(p => p.system.trainer.inTeam),
-      pc: pokemons.filter(p => !p.system.trainer.inTeam),
+      team: pokemons.filter((p) => p.system.trainer.inTeam),
+      pc: pokemons.filter((p) => !p.system.trainer.inTeam),
     };
   }
 
@@ -147,9 +156,26 @@ export default class TrainerSheet extends InteractiveUIFeaturesMixin(
   /* -------------------------------------------- */
 
   /**
-   * 
-   * @param {PointerEvent} event 
-   * @param {HTMLElement} target 
+   * @returns {ContextMenuEntry[]} An array of context menu item objects.
+   */
+  static _getPokemonMenuItems() {
+    return [
+      {
+        name: "POKEYMANZ.Item.EditPokemon",
+        icon: "<i class='fas fa-edit'></i>",
+        callback: (html) => {
+          const element = html instanceof HTMLElement ? html : html[0];
+          const uuid = element.dataset.actorUuid;
+          fromUuidSync(uuid)?.sheet?.render({ force: true });
+        },
+      },
+    ];
+  }
+
+  /**
+   *
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
    */
   static _viewExternalActor(event, target) {
     const div = target.closest(".pokemon");
@@ -168,7 +194,9 @@ export default class TrainerSheet extends InteractiveUIFeaturesMixin(
     if (!docId) return;
     const pokemon = game.actors.get(docId);
 
-    await pokemon?.update({ "system.trainer.inTeam": !pokemon.system.trainer.inTeam });
+    await pokemon?.update({
+      "system.trainer.inTeam": !pokemon.system.trainer.inTeam,
+    });
     this.render();
   }
 }

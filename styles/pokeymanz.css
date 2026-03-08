@@ -326,6 +326,7 @@ section.summary.tab .body-container .details-container {
   height: 2.5rem;
   border-radius: 0 10px 0 0;
   padding: 5px 10px;
+  align-items: center;
 }
 .pokeymanz .info-card .card-containter .title-container span {
   margin: auto;
@@ -335,6 +336,9 @@ section.summary.tab .body-container .details-container {
   border: 2px solid white;
   border-radius: 50%;
   background: var(--type-color);
+}
+.pokeymanz .info-card .card-containter .title-container .controls {
+  font-size: 20px;
 }
 .pokeymanz .info-card .card-containter .card-content {
   min-height: 50px;
@@ -835,6 +839,7 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   margin: auto 5px;
 }
 .note-container .note-content {
+  padding: 0 5px;
   background: rgba(0, 0, 0, 0.3);
 }
 

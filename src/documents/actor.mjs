@@ -32,7 +32,7 @@ export default class PokeymanzActor extends Actor {
    *
    * @param {string} attribute - The name of the attribute to roll.
    * @param {Object} [option={}] - Additional options for the roll (not currently used).
-   * @returns {Roll} The resulting roll object.
+   * @returns {foundry.dice.Roll} The resulting roll object.
    */
   rollAttribute(attribute, option = {}) {
     const data = this.getRollData();
@@ -41,7 +41,7 @@ export default class PokeymanzActor extends Actor {
     const wounds = `${this.calcWoundPenalties() || ""}`;
 
     const rollFormula = `${formula}${wounds}[${label}]`;
-    const roll = Roll.create(rollFormula, data);
+    const roll = foundry.dice.Roll.create(rollFormula, data);
 
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),

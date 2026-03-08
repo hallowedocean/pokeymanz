@@ -80,7 +80,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     return {
-      ... context,
+      ...context,
       actor: this.document,
       config: CONFIG.POKEYMANZ,
       editable: this.isEditable,
@@ -183,7 +183,9 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   }
 
   _prepareInventory() {
-    const items = this.document.items.filter((i) => i.isEquipable).sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    const items = this.document.items
+      .filter((i) => i.isEquipable)
+      .sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
     const categories = {
       backpack: {
@@ -240,6 +242,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   }
 
   async _prepareNotes() {
+    const TextEditor = foundry.applications.ux.TextEditor.implementation;
     const { system } = this.document;
 
     const notes = [];
@@ -249,7 +252,11 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
       notes.push({
         field,
         value,
-        enritch: await field.enrich(value, this.document),
+        enritch: await TextEditor.enrichHTML(value, {
+          secrets: this.document.isOwner,
+          relativeTo: this.document,
+          rollData: this.document.getRollData?.() ?? {},
+        }),
       });
     }
 

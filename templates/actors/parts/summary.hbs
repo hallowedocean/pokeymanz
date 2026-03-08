@@ -169,13 +169,22 @@
                                     alt="{{localize pokemon.system.stats.pokemonTypes.secondary.name}}">
                                 {{/if}}
                             </div>
+                            <div class="controls">
+                                <a class="pokemon-menu fix-context-menu aling--right" data-actor-uuid="{{pokemon.uuid}}">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-content grid grid-rows-2">
                             {{#each pokemon.itemTypes.move as |move|}}
-                            <a class="move-button flex items-center justify-around" style="--type-color: {{move.moveType.color}};" data-action="useItem" data-item-uuid="{{move.uuid}}">
-                                <img src="{{move.moveType.img}}" alt="{{move.moveType.id}}" data-tooltip="{{move.moveType.name}}">
+                            <a class="move-button flex items-center justify-around"
+                                style="--type-color: {{move.moveType.color}};" data-action="useItem"
+                                data-item-uuid="{{move.uuid}}">
+                                <img src="{{move.moveType.img}}" alt="{{move.moveType.id}}"
+                                    data-tooltip="{{move.moveType.name}}">
                                 <span data-tooltip="{{move.name}}">{{move.name}}</span>
-                                <img class="dice-icon" src="{{move.system.roll.diceIcon}}" data-tooltip="{{move.system.roll.formula}}">
+                                <img class="dice-icon" src="{{move.system.roll.diceIcon}}"
+                                    data-tooltip="{{move.system.roll.formula}}">
                             </a>
                             {{/each}}
                         </div>
