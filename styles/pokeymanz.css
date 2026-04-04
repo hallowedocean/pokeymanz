@@ -200,10 +200,13 @@ section.summary.tab .sidebar-card .portrait .profile-img {
 }
 section.summary.tab .sidebar-card .stat-bar {
   margin: 0.4rem 0;
+  display: grid;
+  row-gap: 10px;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container {
   border-radius: 0.3rem;
   border: 3px solid;
+  justify-content: space-around;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input {
   font-size: 1.5rem;

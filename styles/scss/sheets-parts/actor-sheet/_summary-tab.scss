@@ -17,6 +17,8 @@ section.summary.tab {
       .stat-container {
         border-radius: 0.3rem;
         border: 3px solid;
+        display: flex;
+        justify-content: space-between;
 
         .stat-input {
           font-size: 1.5rem;
