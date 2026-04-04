@@ -59,7 +59,7 @@ export default class PokeymanzActor extends Actor {
    */
   calcWoundPenalties() {
     const wounds = foundry.utils.getProperty(this, "system.stats.wounds");
-    return (wounds.max - wounds.value) * -1;
+    return wounds.value * -1;
   }
 
   /**
