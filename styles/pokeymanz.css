@@ -339,6 +339,8 @@ section.summary.tab .body-container .details-container {
   border: 2px solid white;
   border-radius: 50%;
   background: var(--type-color);
+  height: 25px;
+  margin-right: 10px;
 }
 .pokeymanz .info-card .card-containter .title-container .controls {
   font-size: 20px;
@@ -779,6 +781,7 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   transition: transform 300ms ease, filter 300ms ease, box-shadow 300ms ease;
   filter: saturate(0.7);
   transform: scale(0.9);
+  justify-content: center;
 }
 .pokeymanz .type-badge:hover {
   filter: saturate(1.1);
