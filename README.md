@@ -1,3 +1,5 @@
+Trying to make this system a bit more functional. Please be nice to me, I literally have no idea what I'm doing.
+
 # Pokeymanz TTRPG for FoundryVTT
 A unofficial implementation of the PokeymanzTTPRG rules for FoundryVTT. Pokeymanz is a non-profit fan-made pokemon role-playing game.
 
