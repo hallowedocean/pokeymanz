@@ -45,9 +45,7 @@ export default class PokeymanzActor extends Actor {
 
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: game.i18n.format("POKEYMANZ.AttributePromptTitle", {
-        attr: label,
-      }),
+      flavor: game.i18n.format(`${this.name} rolls for ${label}!`),
       rollMode: game.settings.get("core", "rollMode"),
     });
     return roll;
