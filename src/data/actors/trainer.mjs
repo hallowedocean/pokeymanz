@@ -41,7 +41,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
           }),
         }),
         wounds: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 3 }),
+          value: new fields.NumberField({ initial: 0 }),
           max: new fields.NumberField({ initial: 3 }),
         }),
       }),
