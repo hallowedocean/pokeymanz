@@ -49,6 +49,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
         calling: new fields.StringField({ initial: "", size: "large" }),
         pronouns: new fields.StringField({ initial: "", size: "medium" }),
         age: new fields.NumberField({ integer: true, size: "xsmall" }),
+        exp: new fields.NumberField({ integer: true, size: "xsmall" }),
       }),
       currency: new fields.NumberField({
         initial: 0,
