@@ -97,6 +97,10 @@
                 </div>
                 {{/each}}
             </div>
+            {{#if (eq actor.type "trainer")}}
+            {{else}}
+            {{> pokeymanz.ability-container isPlayMode=isPlayMode}}
+            {{/if}}
             {{#if moves}}
             <div class="move-list gap-md flex flex-col">
                 {{#each moves as |move|}}
@@ -158,7 +162,7 @@
                             <span>
                                 {{pokemon.name}}
                             </span>
-                            <div class="types-icons flex gap-sm">
+                            <div class="types-icons flex">
                                 {{#if pokemon.system.stats.pokemonTypes.primary.value}}
                                 <img style="--type-color: {{pokemon.system.stats.pokemonTypes.primary.color}};"
                                     src="{{pokemon.system.stats.pokemonTypes.primary.img}}"
@@ -179,7 +183,7 @@
                         </div>
                         <div class="card-content grid grid-rows-2">
                             {{#each pokemon.itemTypes.move as |move|}}
-                            <a class="move-button flex items-center justify-around"
+                            <a class="move-button flex items-center"
                                 style="--type-color: {{move.moveType.color}};" data-action="useItem"
                                 data-item-uuid="{{move.uuid}}">
                                 <img src="{{move.moveType.img}}" alt="{{move.moveType.id}}"

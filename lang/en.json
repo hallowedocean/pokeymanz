@@ -10,7 +10,8 @@
         "Item": {
             "feat": "Feat",
             "gear": "Gear",
-            "move": "Move"
+            "move": "Move",
+            "ability": "Ability"
         }
     },
     "POKEYMANZ": {
@@ -53,7 +54,8 @@
             "HeldItem": "Held Item",
             "RareItems": "Rare Items",
             "Supplies": "Supplies",
-            "KeyItems": "Key Items"
+            "KeyItems": "Key Items",
+            "Ability": "Ability"
         },
         "ItemSubtypes": {
             "Edge": {
@@ -76,6 +78,10 @@
             "HeldItem": {
                 "Disposable": "Disposable",
                 "Persistent": "Persistent"
+            },
+            "Ability": {
+                "Standard": "Standard",
+                "MegaEvolved": "Mega Evolved"
             }
         },
         "Moves": {

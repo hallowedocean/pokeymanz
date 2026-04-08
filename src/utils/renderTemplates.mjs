@@ -4,5 +4,6 @@ export default async function renderTemplates() {
   return await foundry.applications.handlebars.loadTemplates({
     "pokeymanz.effect-list": `${SYSTEM_CONST.TEMPLATES_PATH}/commons/effects-list.hbs`,
     "pokeymanz.attributes-container": `${SYSTEM_CONST.TEMPLATES_PATH}/actors/partials/attributes-container.hbs`,
+    "pokeymanz.ability-container": `${SYSTEM_CONST.TEMPLATES_PATH}/actors/partials/ability-container.hbs`,
   });
 }

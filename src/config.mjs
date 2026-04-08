@@ -215,6 +215,19 @@ export const POKEYMANZ = {
         },
       },
     },
+    ability: {
+      img: `${SYSTEM_CONST.ASSETS_PATH}/icons/items/round-star.svg`,
+      icon: "fa-solid fa-star",
+      types: {
+        ability: {
+          label: "POKEYMANZ.ItemTypes.Ability", 
+          subtypes: {
+            standard: "POKEYMANZ.ItemSubtypes.Ability.Standard",
+            megaEvolved: "POKEYMANZ.ItemSubtypes.Ability.MegaEvolved",
+          },
+        },
+      }, 
+    },
   },
   diceSteps: [4, 6, 8, 10, 12],
 };

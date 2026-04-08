@@ -25,6 +25,7 @@ Hooks.once("init", () => {
     feat: data.item.FeatData,
     gear: data.item.GearData,
     move: data.item.MoveData,
+    ability: data.item.AbilityData,
   });
 
   /*Registering document class*/
@@ -54,6 +55,11 @@ Hooks.once("init", () => {
     types: ["move"],
     makeDefault: true,
     label: "POKEYMANZ.MoveSheet",
+  });
+  foundry.documents.collections.Items.registerSheet("Ability Sheet", apps.item.AbilitySheet, {
+    types: ["ability"],
+    makeDefault: true,
+    label: "POKEYMANZ.AbilitySheet",
   });
 
   utils.renderTemplates();

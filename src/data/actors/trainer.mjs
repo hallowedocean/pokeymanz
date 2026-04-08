@@ -13,6 +13,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
    */
   static metadata = Object.freeze({
     attributes: ["heart", "fitness", "research", "tactics"],
+    invalidItemTypes: ["ability"],
   });
 
   get metadata() {

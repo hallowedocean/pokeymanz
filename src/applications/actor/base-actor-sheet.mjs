@@ -89,6 +89,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
       systemSource: this.document.system._source,
       systemFields: this.document.system.schema.fields,
       detailsFields: this._prepareDetails(),
+      abilityFields: this._prepareAbility(),
     };
   }
 
@@ -180,6 +181,25 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
       ]),
     );
     return feats;
+  }
+
+  _prepareAbility() {
+    const {
+      ability: { types },
+    } = CONFIG.POKEYMANZ.items;
+
+    const abilities = Object.fromEntries(
+      Object.entries(types).map(([key, { label }]) => [
+        key,
+        {
+          label: game.i18n.localize(label),
+          items: this.document.itemTypes.ability
+            .filter((i) => i.system.type.value === key)
+            .sort((a, b) => (a.sort || 0) - (b.sort || 0)),
+        },
+      ]),
+    );
+    return abilities;
   }
 
   _prepareInventory() {
