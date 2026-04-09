@@ -469,6 +469,7 @@ header.pokeymanz-sheet-header .sheet-tabs {
   border: 0;
   padding-left: 2rem;
   padding-right: 0.7rem;
+  line-height: 0;
 }
 header.pokeymanz-sheet-header .sheet-tabs .tab-icon-button {
   font-size: 1.5rem;
@@ -481,6 +482,10 @@ header.pokeymanz-sheet-header .sheet-tabs .tab-icon-button.active {
   text-shadow: none;
   transform: scale(1);
   opacity: 1;
+}
+use#pokeball {
+  fill: var(--pokeymanz-color-ui-white);
+  width: 35px;
 }
 header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   padding: 5px;
