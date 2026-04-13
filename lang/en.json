@@ -46,6 +46,12 @@
             "Research": "Research",
             "Tactics": "Tactics"
         },
+        "Stats": {
+            "Toughness": "Toughness",
+            "Wounds": "Wounds",
+            "Mastery": "Mastery",
+            "Fury": "Fury"
+        },
         "ItemTypes": {
             "Edge": "Edge",
             "Hindrance": "Hindrance",
