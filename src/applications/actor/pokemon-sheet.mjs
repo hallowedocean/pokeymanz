@@ -161,7 +161,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     }
     moves.sort((a, b) => a.sort - b.sort);
 
-    while (moves.length < 4) {
+    while (moves.length < this.actor.system.propierties.maxMoves) {
       moves.push(null);
     }
 
