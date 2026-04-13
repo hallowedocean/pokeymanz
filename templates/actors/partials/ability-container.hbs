@@ -38,17 +38,12 @@
                     </div>
                 </li>
                 <li class="ability-item flexrow" data-doc-id="{{item.id}}" data-document-class="Item" data-drag="true">
-                    <div class="ability-desc item-name flexrow">
+                    <div class="ability-desc">
                         {{{item.system.notes.description}}}
                     </div>
                 </li>
                 {{/each}}
             {{else}}
-                <li class="ability-item flexrow">
-                    <div class="ability-desc item-name flexrow">
-                        <p></p>
-                    </div>
-                </li>
             {{/if}}
         </ol>
         {{/each}}
