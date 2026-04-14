@@ -2,7 +2,7 @@
   "id": "pokeymanz",
   "title": "Pokeymanz TTRPG",
   "description": "A FoundryVTT system for PokeymanzTTRPG, pokemon fan-made tabletop RPG",
-  "version": "#{VERSION}#",
+  "version": "0.3.1",
   "compatibility": {
     "minimum": "13",
     "verified": "13.345"
@@ -13,6 +13,10 @@
       "url": "https://github.com/joaquinpereyra98",
       "email": "joaquinpereyra98@gmail.com",
       "discord": "joaquinp98"
+    },
+        {
+      "name": "hallowedocean",
+      "url": "https://github.com/hallowedocean"
     }
   ],
   "esmodules": [
