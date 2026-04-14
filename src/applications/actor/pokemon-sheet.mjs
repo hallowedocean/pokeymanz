@@ -20,6 +20,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     },
     actions: {
       toggleTrainerTeam: PokemonSheet._toggleTrainerTeam,
+      adjustStat: PokemonSheet._adjustStat,
     },
     contextMenus: [
       {
@@ -184,5 +185,33 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     await this.document.update({
       "system.trainer.inTeam": !this.document.system.trainer.inTeam,
     });
+  }
+
+  static async _adjustStat(_event, target) {
+    const action = target.dataset.subAction;
+    switch (action) {
+      case "wounds-plus":
+        await this.actor.update({
+          "system.stats.wounds.value": Math.min(this.actor.system.stats.wounds.value + 1, this.actor.system.stats.wounds.max),
+        });
+        break;
+      case "wounds-minus":
+        await this.actor.update({
+          "system.stats.wounds.value": Math.max(0, this.actor.system.stats.wounds.value - 1),
+        });
+        break;
+      case "mastery-plus":
+        await this.actor.update({
+          "system.stats.mastery.value": Math.min(this.actor.system.stats.mastery.value + 1, this.actor.system.stats.mastery.max),
+        });
+        break;
+      case "mastery-minus":
+        await this.actor.update({
+          "system.stats.mastery.value": Math.max(0, this.actor.system.stats.mastery.value - 1),
+        });
+        break;
+      default:
+        throw new Error("Unknown action!");
+    }
   }
 }

@@ -16,11 +16,13 @@
                     <i class="stat-icon fa-solid fa-heart"></i>
                     <label class="stat-label">{{localize "POKEYMANZ.Stats.Wounds"}}</label>
                     <div class="wound-input-container flex">
+                        <a data-action="adjustStat" data-sub-action="wounds-minus"><i class="adjust-icon fa-regular fa-square-minus"></i></a>
                         <input class="stat-input spacing--p-0" type="number" name="system.stats.wounds.value"
-                            value="{{system.stats.wounds.value}}">
+                            value="{{system.stats.wounds.value}}" {{disabled isPlayMode }}>
                         <span>/</span>
-                        <input class="stat-input spacing--p-0" type="number" name="system.stats.wounds.max"
+                        <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.wounds.max"
                             value="{{system.stats.wounds.max}}" {{disabled isPlayMode }}>
+                        <a data-action="adjustStat" data-sub-action="wounds-plus"><i class="adjust-icon fa-regular fa-square-plus"></i></a>
                     </div>
                 </div>
                 {{#if (eq actor.type "pokemon")}}
@@ -30,23 +32,25 @@
                         <label class="stat-label">{{localize "POKEYMANZ.Stats.Fury"}}</label>
                         <div class="fury-input-container flex">
                             <input class="stat-input spacing--p-0" type="number" name="system.stats.fury.value"
-                                value="{{system.stats.fury.value}}">
+                                value="{{system.stats.fury.value}}" {{disabled isPlayMode }}>
                             <span>/</span>
-                            <input class="stat-input spacing--p-0" type="number" name="system.stats.fury.max"
+                            <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.fury.max"
                             value="{{system.stats.fury.max}}" {{disabled isPlayMode }}>
                         </div>
                     </div>
                     {{else}}
                     <div class="mastery-container stat-container flex items-center">
-                            <i class="stat-icon fa-solid fa-crown"></i>
-                            <label class="stat-label">{{localize "POKEYMANZ.Stats.Mastery"}}</label>
-                            <div class="mastery-input-container flex">
-                                <input class="stat-input spacing--p-0" type="number" name="system.stats.mastery.value"
-                                    value="{{system.stats.mastery.value}}" min="0">
-                                <span>/</span>
-                                <input class="stat-input spacing--p-0" type="number" name="system.stats.mastery.max"
-                                value="{{system.stats.mastery.max}}" {{disabled isPlayMode }}>
-                            </div>
+                        <i class="stat-icon fa-solid fa-crown"></i>
+                        <label class="stat-label">{{localize "POKEYMANZ.Stats.Mastery"}}</label>
+                        <div class="mastery-input-container flex">
+                            <a data-action="adjustStat" data-sub-action="mastery-minus"><i class="adjust-icon fa-regular fa-square-minus"></i></a>
+                            <input class="stat-input spacing--p-0" type="number" name="system.stats.mastery.value"
+                                value="{{system.stats.mastery.value}}" min="0" {{disabled isPlayMode }}>
+                            <span>/</span>
+                            <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.mastery.max"
+                            value="{{system.stats.mastery.max}}" {{disabled isPlayMode }}>
+                            <a data-action="adjustStat" data-sub-action="mastery-plus"><i class="adjust-icon fa-regular fa-square-plus"></i></a>
+                        </div>
                     </div>
                     {{/if}}
                 {{/if}}

@@ -235,9 +235,17 @@ section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input:focus, s
 section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input:disabled {
   background: transparent;
 }
+section.summary.tab .sidebar-card .stat-bar .stat-container .stat-max {
+  font-size: 1.1rem;
+}
 section.summary.tab .sidebar-card .stat-bar .stat-container .stat-icon {
   font-size: 1.3rem;
   margin: 0 0.2rem;
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container .adjust-icon {
+  padding: 3px;
+  font-size: 1rem;
+  align-content: center;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.toughtness-container {
   border-color: var(--pokeymanz-color-toughness-secondary);
@@ -256,7 +264,7 @@ section.summary.tab .sidebar-card .stat-bar .stat-container.wounds-container .st
   color: var(--pokeymanz-color-wounds-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.wounds-container span {
-  font-size: 1.5rem;
+  align-content: center;
   height: 1.5rem;
   color: var(--pokeymanz-color-wounds-secondary);
   font-weight: bold;
@@ -271,7 +279,7 @@ section.summary.tab .sidebar-card .stat-bar .stat-container.mastery-container .s
   color: var(--pokeymanz-color-mastery-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.mastery-container span {
-  font-size: 1.5rem;
+  align-content: center;
   height: 1.5rem;
   color: var(--pokeymanz-color-mastery-secondary);
   font-weight: bold;
@@ -286,7 +294,7 @@ section.summary.tab .sidebar-card .stat-bar .stat-container.fury-container .stat
   color: #d14c37;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.fury-container span {
-  font-size: 1.5rem;
+  align-content: center;
   height: 1.5rem;
   color: var(--pokeymanz-color-fury-secondary);
   font-weight: bold;
