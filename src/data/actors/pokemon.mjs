@@ -17,13 +17,14 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
     return {
       stats: new fields.SchemaField({
         mastery: new fields.SchemaField({
-          value1: new fields.BooleanField({ initial: false }),
-          value2: new fields.BooleanField({ initial: false }),
+          value: new fields.NumberField({ initial: 0, integer: true }),
+          max: new fields.NumberField({ initial: 0, integer: true }),
         }),
-        exp: new fields.NumberField({
-          initial: 0,
-          integer: true,
+        fury: new fields.SchemaField({
+          value: new fields.NumberField({ initial: 0, integer: true }),
+          max: new fields.NumberField({ initial: 3, integer: true }),
         }),
+        exp: new fields.NumberField({ initial: 0 }),
         toughness: new fields.SchemaField({
           value: new fields.NumberField({ initial: 4, integer: true }),
         }),
@@ -36,8 +37,8 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
           }),
         }),
         wounds: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0 }),
-          max: new fields.NumberField({ initial: 3 }),
+          value: new fields.NumberField({ initial: 0, integer: true }),
+          max: new fields.NumberField({ initial: 3, integer: true }),
         }),
       }),
       details: new fields.SchemaField({
@@ -53,6 +54,7 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       }),
       propierties: new fields.SchemaField({
         maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
+        isShadow: new fields.BooleanField({ initial: false }),
       }),
     };
   }

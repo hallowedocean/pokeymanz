@@ -6,7 +6,7 @@
 }
 
 .pokeymanz {
-  --pokeymanz-color-ui-red: #C6242C;
+  --pokeymanz-color-ui-red: #ab2b2b;
   --pokeymanz-color-ui-white: #fbfbfb !important;
   --pokeymanz-color-ui-black: #383939 !important;
   --pokeymanz-color-card-light: #818078;
@@ -15,10 +15,14 @@
   --pokeymanz-color-heart: #ff3750;
   --pokeymanz-color-tactics: #087608;
   --pokeymanz-color-fitness: #f86522;
-  --pokeymanz-color-toughness-primary: #002b77;
-  --pokeymanz-color-toughness-secondary: #3f6ab8;
-  --pokeymanz-color-wounds-primary: #941100;
-  --pokeymanz-color-wounds-secondary: #ce3922;
+  --pokeymanz-color-toughness-primary: #375b9e;
+  --pokeymanz-color-toughness-secondary: #002b77;
+  --pokeymanz-color-wounds-primary: #b13623;
+  --pokeymanz-color-wounds-secondary: #7e0f00;
+  --pokeymanz-color-mastery-primary: #b07e0a;
+  --pokeymanz-color-mastery-secondary: #875404;
+  --pokeymanz-color-fury-primary: #4e478c;
+  --pokeymanz-color-fury-secondary: #342c75;
 }
 
 .theme-light .pokeymanz.sheet {
@@ -144,9 +148,6 @@
   overflow: hidden;
   max-width: 27ch;
 }
-/*.move-container .move-accordion .move-header .move-type {
-  margin: auto 1.5rem;
-}*/
 .move-container .move-accordion .move-header .move-menu {
   font-size: 1.2rem;
   padding: 0 0.5rem;
@@ -210,10 +211,16 @@ section.summary.tab .sidebar-card .stat-bar .stat-container {
   border: 3px solid;
   justify-content: space-around;
 }
+section.summary.tab .sidebar-card .stat-container .stat-label {
+  font-family: var(--pokeymanz-font-label);
+  line-height: 1rem;
+  font-size: 15px;
+  color: #f0e9df;
+}
 section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input {
   font-size: 1.5rem;
   height: 1.5rem;
-  width: 2.5ch;
+  width: 1.5ch;
   border: 0;
   text-align: center;
   color: white;
@@ -233,25 +240,55 @@ section.summary.tab .sidebar-card .stat-bar .stat-container .stat-icon {
   margin: 0 0.2rem;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.toughtness-container {
-  border-color: var(--pokeymanz-color-toughness-primary);
-  background-color: var(--pokeymanz-color-toughness-secondary);
+  border-color: var(--pokeymanz-color-toughness-secondary);
+  background-color: var(--pokeymanz-color-toughness-primary);
   box-shadow: 0 0 5px var(--pokeymanz-color-toughness-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.toughtness-container .stat-icon {
-  color: var(--pokeymanz-color-toughness-primary);
+  color: var(--pokeymanz-color-toughness-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.wounds-container {
-  border-color: var(--pokeymanz-color-wounds-primary);
-  background-color: var(--pokeymanz-color-wounds-secondary);
+  border-color: var(--pokeymanz-color-wounds-secondary);
+  background-color: var(--pokeymanz-color-wounds-primary);
   box-shadow: 0 0 5px var(--pokeymanz-color-wounds-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.wounds-container .stat-icon {
-  color: var(--pokeymanz-color-wounds-primary);
+  color: var(--pokeymanz-color-wounds-secondary);
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container.wounds-container span {
   font-size: 1.5rem;
   height: 1.5rem;
-  color: var(--pokeymanz-color-wounds-primary);
+  color: var(--pokeymanz-color-wounds-secondary);
+  font-weight: bold;
+  line-height: 1;
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.mastery-container {
+  background-color: var(--pokeymanz-color-mastery-primary);
+  box-shadow: 0 0 5px var(--pokeymanz-color-mastery-secondary);
+  border-color: var(--pokeymanz-color-mastery-secondary);
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.mastery-container .stat-icon {
+  color: var(--pokeymanz-color-mastery-secondary);
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.mastery-container span {
+  font-size: 1.5rem;
+  height: 1.5rem;
+  color: var(--pokeymanz-color-mastery-secondary);
+  font-weight: bold;
+  line-height: 1;
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.fury-container {
+  background-color: var(--pokeymanz-color-fury-primary);
+  box-shadow: 0 0 5px var(--pokeymanz-color-fury-secondary);
+  border-color: var(--pokeymanz-color-fury-secondary);
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.fury-container .stat-icon {
+  color: #d14c37;
+}
+section.summary.tab .sidebar-card .stat-bar .stat-container.fury-container span {
+  font-size: 1.5rem;
+  height: 1.5rem;
+  color: var(--pokeymanz-color-fury-secondary);
   font-weight: bold;
   line-height: 1;
 }
@@ -321,6 +358,8 @@ section.summary.tab .body-container .details-container {
 }
 .ability-desc {
   padding: 0px 5px;
+  overflow: hidden;
+  text-align: left;
 }
 .pokeymanz .info-card .portrait-contianer {
   background: var(--card-color);
@@ -539,6 +578,7 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   background-size: 30px;
   border: none;
   margin-right: 5px;
+  padding: 3px;
 }
 .pokeymanz ol.items-list .item .item-type,
 .pokeymanz ol.items-list .item .item-price,
