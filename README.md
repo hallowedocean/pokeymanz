@@ -5,12 +5,6 @@ A unofficial implementation of the PokeymanzTTPRG rules for FoundryVTT. Pokeyman
 
 The support and development of this implementation is independent of the Pokaymanz game developed by [ChronicDelusionist](https://chronicdelusionist.neocities.org/Pokeymanz/).
 
-## How to Install
-Use the following manifest URL in FoundryVTT's system installer:
-```
-https://github.com/hallowedocean/pokeymanz/releases/latest/download/system.json
-```
-
 ## Development
 
 This system is under active development. Contributions and issue reports are welcome via the [GitHub Issues page](https://github.com/hallowedocean/pokeymanz/issues).
