@@ -1,4 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&family=Signika+Negative:wght@300..700&display=swap");
+
+@font-face {
+    font-family: 'Glyphter';
+    src: url('../fonts/Glyphter.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icon-']:before{
+	display: inline-block;
+   font-family: 'Glyphter';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+.icon-d4:before{content:'\0041';}
+.icon-d6:before{content:'\0042';}
+.icon-d8:before{content:'\0043';}
+.icon-d10:before{content:'\0044';}
+.icon-d12:before{content:'\0045';}
+.icon-d20:before{content:'\0046';}
+.icon-d100:before{content:'\0047';}
+.icon-pokeball:before{content:'\0048';}
+
 .pokeymanz {
   --pokeymanz-font-title: "Signika", "Palatino Linotype", sans-serif;
   --pokeymanz-font-label: "Sigmar One", sans-serif;
@@ -19,8 +44,8 @@
   --pokeymanz-color-toughness-secondary: #002b77;
   --pokeymanz-color-wounds-primary: #b13623;
   --pokeymanz-color-wounds-secondary: #7e0f00;
-  --pokeymanz-color-mastery-primary: #b07e0a;
-  --pokeymanz-color-mastery-secondary: #875404;
+  --pokeymanz-color-mastery-primary: #a07206;
+  --pokeymanz-color-mastery-secondary: #6c4810;
   --pokeymanz-color-fury-primary: #4e478c;
   --pokeymanz-color-fury-secondary: #342c75;
 }
@@ -537,10 +562,6 @@ header.pokeymanz-sheet-header .sheet-tabs .tab-icon-button.active {
   text-shadow: none;
   transform: scale(1);
   opacity: 1;
-}
-use#pokeball {
-  fill: var(--pokeymanz-color-ui-white);
-  width: 35px;
 }
 header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   padding: 5px;

@@ -79,7 +79,7 @@ export default class TrainerSheet extends InteractiveUIFeaturesMixin(
     {
       id: "pokemon",
       group: "primary",
-      svg: `${SYSTEM_CONST.ASSETS_PATH}/icons/pokeball2.svg#pokeball`,
+      icon: "icon-pokeball",
       label: "POKEYMANZ.Sheets.TABS.Pokemon",
     },
     {
