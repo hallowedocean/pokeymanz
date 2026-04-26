@@ -6,7 +6,7 @@
     font-weight: normal;
     font-style: normal;
 }
-[class*='icon-']:before{
+[class*='glyphter-icon-']:before{
 	display: inline-block;
    font-family: 'Glyphter';
    font-style: normal;
@@ -15,14 +15,14 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale
 }
-.icon-d4:before{content:'\0041';}
-.icon-d6:before{content:'\0042';}
-.icon-d8:before{content:'\0043';}
-.icon-d10:before{content:'\0044';}
-.icon-d12:before{content:'\0045';}
-.icon-d20:before{content:'\0046';}
-.icon-d100:before{content:'\0047';}
-.icon-pokeball:before{content:'\0048';}
+.glyphter-icon-d4:before{content:'\0041';}
+.glyphter-icon-d6:before{content:'\0042';}
+.glyphter-icon-d8:before{content:'\0043';}
+.glyphter-icon-d10:before{content:'\0044';}
+.glyphter-icon-d12:before{content:'\0045';}
+.glyphter-icon-d20:before{content:'\0046';}
+.glyphter-icon-d100:before{content:'\0047';}
+.glyphter-icon-pokeball:before{content:'\0048';}
 
 .pokeymanz {
   --pokeymanz-font-title: "Signika", "Palatino Linotype", sans-serif;
