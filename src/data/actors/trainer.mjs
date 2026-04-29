@@ -31,7 +31,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
       ),
       stats: new fields.SchemaField({
         toughness: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0, integer: true, nullable: false, required: true }),
+          value: new fields.NumberField({ initial: 2, integer: true, nullable: false, required: true }),
         }),
         pokemonTypes: new fields.SchemaField({
           primary: new fields.SchemaField({
@@ -83,6 +83,8 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
       const attribute = this.attributes[key];
       attribute.name = `POKEYMANZ.Attributes.${key.capitalize()}`;
     }
+
+    this.stats.toughness.value = this.attributes.fitness.faces / 2;
   }
 
   /* -------------------------------------------- */
