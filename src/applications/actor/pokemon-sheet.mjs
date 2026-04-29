@@ -141,6 +141,18 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     };
   }
 
+  async _preparePartContext(partId, context, options) {
+    const basePartContext = await super._preparePartContext(partId, context, options);
+    switch (partId) {
+      case "summary":
+        basePartContext.abilityFields = this._prepareAbility();
+        break;
+      default:
+        break;
+    }
+    return basePartContext;
+  }
+
   async _prepareMoves() {
     const moves = [];
 
@@ -167,6 +179,25 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     }
 
     return moves;
+  }
+
+  _prepareAbility() {
+    const {
+      ability: { types },
+    } = CONFIG.POKEYMANZ.items;
+
+    const abilities = Object.fromEntries(
+      Object.entries(types).map(([key, { label }]) => [
+        key,
+        {
+          label: game.i18n.localize(label),
+          items: this.document.itemTypes.ability
+            .filter((i) => i.system.type.value === key)
+            .sort((a, b) => (b.system.subtype.value.localeCompare(a.system.subtype.value))),
+        },
+      ]),
+    );
+    return abilities;
   }
   /* -------------------------------------------- */
   /*  Event Listeners and Handlers                */
