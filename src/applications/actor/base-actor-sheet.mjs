@@ -79,6 +79,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
   /**@inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.isGM = game.user.isGM;
     return {
       ...context,
       actor: this.document,
