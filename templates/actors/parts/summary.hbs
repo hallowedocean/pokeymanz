@@ -88,7 +88,7 @@
             {{> pokeymanz.attributes-container isPlayMode=isPlayMode attributes=attributes }}
             {{/if}}
             {{#if (eq actor.type "pokemon")}}
-                <div class="trainer-fields-container justify-between flex flex-row">
+                <div class="trainer-fields-container flex flex-col">
                     {{#if actor.haveTrainer}}
                         {{#if (not isPlayMode)}}
                             <div class="input-group flex items-center">
