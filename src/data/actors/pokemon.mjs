@@ -14,48 +14,63 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
 
   static defineSchema() {
     const fields = foundry.data.fields;
-    return {
-      stats: new fields.SchemaField({
-        mastery: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0, integer: true }),
-          max: new fields.NumberField({ initial: 0, integer: true }),
+    const schema = {};
+
+    schema.stats = new fields.SchemaField({
+      mastery: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, integer: true }),
+        max: new fields.NumberField({ initial: 0, integer: true }),
+      }),
+      fury: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, integer: true }),
+        max: new fields.NumberField({ initial: 3, integer: true }),
+      }),
+      exp: new fields.NumberField({ initial: 0 }),
+      toughness: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 4, integer: true }),
+      }),
+      pokemonTypes: new fields.SchemaField({
+        primary: new fields.SchemaField({
+          value: pokemonTypeFields(),
         }),
-        fury: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0, integer: true }),
-          max: new fields.NumberField({ initial: 3, integer: true }),
-        }),
-        exp: new fields.NumberField({ initial: 0 }),
-        toughness: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 4, integer: true }),
-        }),
-        pokemonTypes: new fields.SchemaField({
-          primary: new fields.SchemaField({
-            value: pokemonTypeFields(),
-          }),
-          secondary: new fields.SchemaField({
-            value: pokemonTypeFields(),
-          }),
-        }),
-        wounds: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0, integer: true }),
-          max: new fields.NumberField({ initial: 3, integer: true }),
+        secondary: new fields.SchemaField({
+          value: pokemonTypeFields(),
         }),
       }),
-      details: new fields.SchemaField({
-        species: new fields.StringField({ initial: "", size: "medium" }),
-        gender: new fields.StringField({ initial: "", size: "xsmall" }),
+      wounds: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, integer: true }),
+        max: new fields.NumberField({ initial: 3, integer: true }),
+      }),
+    });
+
+    //create a schemaField for each Pokemon type
+    schema.typeMatchups = new fields.SchemaField(CONFIG.POKEYMANZ.pokemonTypesList.reduce((acc, type) => {
+      acc[type.id] = new fields.SchemaField({
+        name: new fields.StringField({ initial: type.name }), 
+        color: new fields.StringField({ initial: type.color }), 
+        img: new fields.StringField({ initial: type.img }), 
+        bonus: new fields.NumberField({ initial: 0, integer: true, nullable: true }), 
+      });
+      return acc;
+    }, {}));
+    schema.details = new fields.SchemaField({
+      species: new fields.StringField({ initial: "", size: "" }),
+      gender: new fields.StringField({ initial: "", size: "xsmall" }),
       variant: new fields.StringField({ initial: "", size: "medium" }),
-        pokedexEntry: new NotesHTMLField(),
-      }),
-      trainer: new fields.SchemaField({
-        value: new fields.ForeignDocumentField(foundry.documents.BaseActor),
-        inTeam: new fields.BooleanField({ initial: false }),
-      }),
-      propierties: new fields.SchemaField({
-        maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
-        isShadow: new fields.BooleanField({ initial: false }),
-      }),
-    };
+    });
+    schema.notes = new fields.SchemaField({
+      pokedexEntry: new NotesHTMLField(),
+    });
+    schema.trainer = new fields.SchemaField({
+      value: new fields.ForeignDocumentField(foundry.documents.BaseActor),
+      inTeam: new fields.BooleanField({ initial: false }),
+    });
+    schema.propierties = new fields.SchemaField({
+      maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
+      isShadow: new fields.BooleanField({ initial: false }),
+    });
+
+    return schema;
   }
 
   /* -------------------------------------------- */
@@ -69,7 +84,56 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
         ...pokemonTypesList.find((t) => t.id === type.value),
       };
     }
+
+    this.prepareTypeMatchups();
   }
 
   /* -------------------------------------------- */
+
+  async prepareTypeMatchups () {
+    // create a variable to hold our type compatibilities while we calculate. name keys so we can update actors easily at the end and start every value at zero.
+    let workingTypeMatchups = CONFIG.POKEYMANZ.pokemonTypesList.reduce((acc, type) => {
+      acc[`system.typeMatchups.${type.id}.bonus`] = 0;
+      return acc;
+    }, {});
+
+    // get compatibilities for both types; list value for each compatibility
+    const firstTypeMatchups = (this.stats.pokemonTypes.primary.value) ? this.stats.pokemonTypes.primary : [];
+    const secondTypeMatchups = (this.stats.pokemonTypes.secondary.value) ? this.stats.pokemonTypes.secondary : [];
+    const typeBonuses = { weaknesses: 2, resistances: -2, immunities: null };
+
+    // assign weaknesses, resistances, and immunities for first type
+    Object.keys(typeBonuses).forEach(key => {
+
+      // check if the type has weaknesses / resistances / immunities. if not, do nothing.
+      if (Array.isArray(firstTypeMatchups[key]) && (firstTypeMatchups[key].length > 0)) {
+
+        // apply bonus for each weakness / resistance / immunity
+        firstTypeMatchups[key].forEach(namedType => { 
+          workingTypeMatchups[`system.typeMatchups.${namedType}.bonus`] = typeBonuses[key];
+        });
+      }
+    });
+
+    // assign weaknesses, resistances, and immunities for second type
+    Object.keys(typeBonuses).forEach(key => {
+
+      // check if the type has weaknesses / resistances / immunities. if not, do nothing.
+      if (Array.isArray(secondTypeMatchups[key]) && (secondTypeMatchups[key].length > 0)) {
+
+        // if already immune, keep immunity. if weak or resistant, add second type's bonus to first type's.
+        secondTypeMatchups[key].forEach(namedType => { 
+          switch (workingTypeMatchups[`system.typeMatchups.${namedType}.bonus`]) {
+            case null:
+              break;
+            default:
+              workingTypeMatchups[`system.typeMatchups.${namedType}.bonus`] = (typeBonuses[key]) ? workingTypeMatchups[`system.typeMatchups.${namedType}.bonus`] + typeBonuses[key] : typeBonuses[key];
+          }
+        });
+      }
+    });
+
+    // update system.typeMatchups on parent actor
+    await this.parent.update(workingTypeMatchups);
+  }
 }

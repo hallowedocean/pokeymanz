@@ -62,5 +62,14 @@ Hooks.once("init", () => {
     label: "POKEYMANZ.AbilitySheet",
   });
 
+  /*Registering Handlebars helpers*/
+  Handlebars.registerHelper("compareObjectToValue", function (obj, operator, value) {
+    if (eval(Object.keys(obj).length + operator + value)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   utils.renderTemplates();
 });

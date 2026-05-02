@@ -164,9 +164,22 @@
             "TargetLabel": "Target",
             "TargetHint": "Choose how the effects are applied—whether to the targeted actors, yourself, or a specific actor set by UUID"
         },
+        "TypeMatchups": {
+            "Label": "Type Matchups", 
+            "DescriptionSingular": "Incoming attacks of this type have a bonus of ",
+            "DescriptionPlural": "Incoming attacks of these types have a bonus of ",
+            "NoEffectSingular": "Incoming attacks of this type have no effect!",
+            "NoEffectPlural": "Incoming attacks of these types have no effect!",
+            "NormalDamage": "Normal Damage",
+            "Weaknesses": "Super Effective",
+            "ExtremeWeaknesses": "Extremely Effective",
+            "Resistances": "Not Very Effective",
+            "ExtremeResistances": "Mostly Ineffective",
+            "Immunities": "No Effect"
+        },
         "Description": "Description",
         "GMNotes": "GM Notes",
         "Category": "Category",
-        "Type": "Type"
+        "Type": "Type"   
     }
 }

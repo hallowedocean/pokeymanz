@@ -958,6 +958,15 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.notes .type-matchups-container .type-matchup-descriptions {
+  display: contents;
+}
+
+.notes .type-matchups-container .type-badge {
+  --type-color: {{item.color}}; 
+  max-width: 95px;
+}
+
 .flex {
   display: flex;
 }

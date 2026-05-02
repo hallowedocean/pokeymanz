@@ -147,6 +147,8 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       case "summary":
         basePartContext.abilityFields = this._prepareAbility();
         break;
+      case "notes":
+        basePartContext.typeMatchupLists = this._preparetypeMatchupLists();
       default:
         break;
     }
@@ -199,6 +201,44 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     );
     return abilities;
   }
+
+  _preparetypeMatchupLists() {
+
+    //enrich with localized name, color, and icon for each type
+    const currentTypeMatchups = Object.fromEntries(
+      Object.entries(this.document.system.typeMatchups).map(([key, { bonus }]) => {
+        let typeListing = CONFIG.POKEYMANZ.pokemonTypesList.filter(x => x.id === key)[0];
+        return [
+          key,
+          {
+            bonus: bonus,
+            name: typeListing.name,
+            img: typeListing.img,
+            color: typeListing.color,
+          },
+        ];
+      }),      
+    );
+
+    //return a list for each with the label and bonus applied to incoming attacks
+    let typeMatchupList = {};
+    const typeBonuses = { normalDamage: 0, extremeWeaknesses: 4, weaknesses: 2, immunities: null, resistances: -2, extremeResistances: -4 };
+
+    Object.keys(typeBonuses).forEach(list => {
+      typeMatchupList[list] = Object.keys(currentTypeMatchups).reduce((acc, key) => {
+        acc.types = acc.types || {}; 
+        if (currentTypeMatchups[key].bonus === typeBonuses[list]) {
+          acc.types[key] = currentTypeMatchups[key];
+        }
+        return acc;
+      }, {});
+      typeMatchupList[list].bonus = typeBonuses[list];
+      typeMatchupList[list].label = `POKEYMANZ.TypeMatchups.${list.capitalize()}`;
+    });
+
+    return typeMatchupList;
+  }
+
   /* -------------------------------------------- */
   /*  Event Listeners and Handlers                */
   /* -------------------------------------------- */
