@@ -44,8 +44,7 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       details: new fields.SchemaField({
         species: new fields.StringField({ initial: "", size: "medium" }),
         gender: new fields.StringField({ initial: "", size: "xsmall" }),
-      }),
-      notes: new fields.SchemaField({
+      variant: new fields.StringField({ initial: "", size: "medium" }),
         pokedexEntry: new NotesHTMLField(),
       }),
       trainer: new fields.SchemaField({
