@@ -1,41 +1,46 @@
 <section class="tab notes {{tab.cssClass}}" data-group="primary" data-tab="notes">
 {{#if (eq actor.type "trainer")}}
 {{else}}
-<h3>{{localize "POKEYMANZ.TypeMatchups.Label"}}</h3>
-<div class="type-matchups-container">
-        {{#each typeMatchupLists as |section sid|}}
-        {{#unless (compareObjectToValue section.types "===" 0)}}
-        <ol class="items-list">
-        <li class="items-header flexrow">
-            <div class="item-name flexrow">
-              {{localize section.label}} 
-            </div>
-            <div class="effect-data type-matchup-descriptions">
-              {{#if section.bonus}}
-                {{#if (compareObjectToValue section.types "===" 1)}}{{localize "POKEYMANZ.TypeMatchups.DescriptionSingular"}}{{else}}{{localize "POKEYMANZ.TypeMatchups.DescriptionPlural"}}{{/if}}{{numberFormat section.bonus sign=true}}
-              {{else}}
-                {{#if (eq section.bonus 0)}}
-                  {{#if (compareObjectToValue section.types "===" 1)}}{{localize "POKEYMANZ.TypeMatchups.DescriptionSingular"}}{{else}}{{localize "POKEYMANZ.TypeMatchups.DescriptionPlural"}}{{/if}}{{numberFormat section.bonus sign=true}}
-                {{else}}
-                  {{#if (compareObjectToValue section.types "===" 1)}}{{localize "POKEYMANZ.TypeMatchups.NoEffectSingular"}}{{else}}{{localize "POKEYMANZ.TypeMatchups.NoEffectPlural"}}{{/if}}
-                {{/if}}
-              {{/if}}
-            </div>
-        </li>
-<ol class="item-list spacing--p-0 spacing--m-0">
-<li class="item feat flexrow" data-doc-id="{{item.id}}">
-            {{#each section.types as |item|}}
-                <div class="type-badge flex items-center size--medium" style="--type-color: {{item.color}};">
-                    <img src="{{item.img}}" alt="{{item.id}}">
-                    <span>{{localize item.name}}</span>
-                </div>
-            {{/each}}
-            </li>
-        </ol>
-        </ol>
-        {{/unless}}
+  <h3>{{localize "POKEYMANZ.TypeMatchups.Label"}}</h3>
+  <div class="type-matchups-container">
+    {{#each typeMatchupLists as |section sid|}}
+    {{#unless (compareObjectToValue section.types "===" 0)}}
+    <ol class="items-list">
+    <li class="items-header flexrow">
+      <div class="item-name flexrow">
+        {{localize section.label}} 
+      </div>
+      <div class="effect-data type-matchup-descriptions">
+      {{#if section.bonus}}
+        <span>{{#if (compareObjectToValue section.types "===" 1)}}
+          {{localize "POKEYMANZ.TypeMatchups.DescriptionSingular"}}
+        {{else}}
+          {{localize "POKEYMANZ.TypeMatchups.DescriptionPlural"}}
+        {{/if}} 
+        <b>{{numberFormat section.bonus sign=true}}</b></span>
+      {{else}}
+        {{#if (eq section.bonus 0)}}
+          <span>{{#if (compareObjectToValue section.types "===" 1)}}{{localize "POKEYMANZ.TypeMatchups.DescriptionSingular"}}{{else}}{{localize "POKEYMANZ.TypeMatchups.DescriptionPlural"}}{{/if}} <b>{{numberFormat section.bonus sign=true}}</b></span>
+        {{else}}
+          <span>{{#if (compareObjectToValue section.types "===" 1)}}{{localize "POKEYMANZ.TypeMatchups.NEDescriptionSingular"}}{{else}}{{localize "POKEYMANZ.TypeMatchups.NEDescriptionPlural"}}{{/if}} <b>{{localize "POKEYMANZ.TypeMatchups.NoEffectText"}}</b>!</span>
+        {{/if}}
+      {{/if}}
+      </div>
+    </li>
+      <ol class="item-list spacing--p-0 spacing--m-0">
+      <li class="item feat flexrow" data-doc-id="{{item.id}}">
+        {{#each section.types as |item|}}
+          <div class="type-badge flex items-center size--medium" style="--type-color: {{item.color}};">
+              <img src="{{item.img}}" alt="{{item.id}}">
+              <span>{{localize item.name}}</span>
+          </div>
         {{/each}}
- </div>   
+        </li>
+        </ol>
+    </ol>
+    {{/unless}}
+    {{/each}}
+  </div>   
 {{/if}}
 
 <br>

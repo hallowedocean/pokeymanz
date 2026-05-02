@@ -960,6 +960,7 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
 
 .notes .type-matchups-container .type-matchup-descriptions {
   display: contents;
+  font-weight: normal;
 }
 
 .notes .type-matchups-container .type-badge {
