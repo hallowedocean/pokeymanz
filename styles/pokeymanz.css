@@ -185,11 +185,22 @@
   border-radius: 0 0 0.5rem 0.5rem;
 }
 .move-container .move-accordion .move-content .description-content {
-  min-height: 3rem;
   overflow: hidden;
 }
 .move-container .move-accordion .move-content .description-content * {
   word-break: break-word;
+}
+.move-container .move-accordion .move-content .move-type-matchups {
+padding-bottom: 5px;
+}
+.move-container .move-accordion .move-content .move-type-matchups .move-type-matchups-header {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold; 
+}
+.move-container .move-accordion .move-content .move-type-matchups .move-type-matchup-label {
+  font-weight: bold;
+  color: white;
 }
 .move-container.empty-move {
   cursor: pointer;
@@ -656,6 +667,10 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
 .pokeymanz ol.items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
+}
+
+section.tab.notes .type-matchups-container ol.items-list ol.item-list {
+  padding: 5px 0px;
 }
 
 .rollable-button,

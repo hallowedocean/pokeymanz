@@ -127,7 +127,7 @@
         </div>
         <div class="body-container gap-sm flex flex-col">
             <div class="name-container flex flex-row items-center">
-            <input class="document-name" name="name" type="text" value="{{actor.name}}" data-tooltip="{{actor.name}}"
+                <input class="document-name" name="name" type="text" value="{{actor.name}}" data-tooltip="{{actor.name}}"
                 {{disabled isPlayMode }} />
                 {{#if (eq actor.type "pokemon")}}
                     {{#each system.flags as |flag|}}
@@ -184,6 +184,14 @@
                         <div class="move-content">
                             <div class="description-content">
                                 {{{move.enrichDescription}}}
+                            </div>
+                            <hr>
+                            <div class="move-type-matchups">
+                                <h6 class="move-type-matchups-header">{{localize "POKEYMANZ.TypeMatchups.Label"}}</h6>
+                                {{#if move.moveType.superEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Weaknesses"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.superEffectiveAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.neutralDamageAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.NormalDamage"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.neutralDamageAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.notVeryEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Resistances"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.notVeryEffectiveAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.noEffectAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Immunities"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.noEffectAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}
                             </div>
                         </div>
                     </div>

@@ -162,7 +162,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       moves.push({
         ...move.toObject(),
         uuid: move.uuid,
-        moveType: move.system.pokemonTypes.primary,
+        moveType: this._prepareMoveTypeMatchups(move.system.pokemonTypes.primary),
         enrichDescription:
           await foundry.applications.ux.TextEditor.implementation.enrichHTML(
             move.system.notes.description,
@@ -202,6 +202,16 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     return abilities;
   }
 
+  _prepareMoveTypeMatchups(moveType) {
+    const typeLists = ["superEffectiveAgainst", "neutralDamageAgainst", "notVeryEffectiveAgainst", "noEffectAgainst"];
+
+    typeLists.forEach(list => {
+      moveType[list] = moveType[list].map(word => `POKEYMANZ.Types.${word.capitalize()}`).sort();
+    });
+
+    return moveType;
+  }
+
   _preparetypeMatchupLists() {
 
     //enrich with localized name, color, and icon for each type
@@ -217,7 +227,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
             color: typeListing.color,
           },
         ];
-      }),      
+      }).sort(),      
     );
 
     //return a list for each with the label and bonus applied to incoming attacks

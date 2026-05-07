@@ -31,10 +31,18 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       }),
       pokemonTypes: new fields.SchemaField({
         primary: new fields.SchemaField({
-          value: pokemonTypeFields(),
+          value: (() => { 
+            const typeList = pokemonTypeFields();
+            delete typeList.choices.shadow;
+            return typeList;
+          })(),
         }),
         secondary: new fields.SchemaField({
-          value: pokemonTypeFields(),
+          value: (() => { 
+            const typeList = pokemonTypeFields();
+            delete typeList.choices.shadow;
+            return typeList;
+          })(),
         }),
       }),
       wounds: new fields.SchemaField({
@@ -73,7 +81,7 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
         label: new fields.StringField({ initial: CONFIG.POKEYMANZ.flags[flag].label }),
         img: new fields.StringField({ initial: CONFIG.POKEYMANZ.flags[flag].img }), 
         value: new fields.BooleanField({ initial: false }), 
-    });
+      });
       return acc;
     }, {}));
 
