@@ -67,8 +67,15 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
     });
     schema.propierties = new fields.SchemaField({
       maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
-      isShadow: new fields.BooleanField({ initial: false }),
     });
+    schema.flags = new fields.SchemaField(Object.keys(CONFIG.POKEYMANZ.flags).reduce((acc, flag) => {
+      acc[flag] = new fields.SchemaField({
+        label: new fields.StringField({ initial: CONFIG.POKEYMANZ.flags[flag].label }),
+        img: new fields.StringField({ initial: CONFIG.POKEYMANZ.flags[flag].img }), 
+        value: new fields.BooleanField({ initial: false }), 
+    });
+      return acc;
+    }, {}));
 
     return schema;
   }

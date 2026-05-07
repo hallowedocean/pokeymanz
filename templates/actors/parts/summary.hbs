@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 {{#if (eq actor.type "pokemon")}}
-                    {{#if system.propierties.isShadow}}
+                    {{#if system.flags.isShadow.value}}
                     <div class="fury-container stat-container flex items-center">
                         <i class="stat-icon fa-solid fa-cloud-bolt"></i>
                         <label class="stat-label">{{localize "POKEYMANZ.Stats.Fury"}}</label>
@@ -115,11 +115,28 @@
                         {{/if}}
                     {{/if}}
                 </div>
+                {{#if (and isGM (not isPlayMode))}}
+                <div> 
+                    {{#each system.flags as |flag|}}
+                    <input type="checkbox" name="system.flags.{{@key}}.value" {{checked flag.value}} />
+                    <label>{{localize flag.label}}?</label><br>
+                    {{/each}}
+                </div>
+                {{/if}}
             {{/if}}
         </div>
         <div class="body-container gap-sm flex flex-col">
+            <div class="name-container flex flex-row items-center">
             <input class="document-name" name="name" type="text" value="{{actor.name}}" data-tooltip="{{actor.name}}"
                 {{disabled isPlayMode }} />
+                {{#if (eq actor.type "pokemon")}}
+                    {{#each system.flags as |flag|}}
+                        {{#if flag.value}}
+                        <img class="flag-icon" src="{{flag.img}}" data-tooltip="{{localize flag.label}}">
+                        {{/if}}
+                    {{/each}}
+                {{/if}}
+            </div>
             <div class="flex details-container gap-sm">
                 {{#each detailsFields as |field|}}
                 <div class="input-group flex items-center size--{{field.size}}" data-tooltip="{{field.value}}">

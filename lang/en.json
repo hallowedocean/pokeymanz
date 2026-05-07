@@ -24,6 +24,10 @@
                     "biography": {
                         "label": "Biography"
                     }
+                    },
+                "flags": {
+                    "isShadow": "Shadow Pokemon",
+                    "isShiny": "Shiny Pokemon"
                 }
             }
         },
@@ -138,7 +142,8 @@
             "Steel": "Steel",
             "Dragon": "Dragon",
             "Dark": "Dark",
-            "Fairy": "Fairy"
+            "Fairy": "Fairy",
+            "Shadow": "Shadow"
         },
         "Effect": {
             "Applied": "Applied",
@@ -176,7 +181,8 @@
             "ExtremeWeaknesses": "Extremely Effective",
             "Resistances": "Not Very Effective",
             "ExtremeResistances": "Mostly Ineffective",
-            "Immunities": "No Effect"
+            "Immunities": "No Effect",
+            "Against": "against"
         },
         "Description": "Description",
         "GMNotes": "GM Notes",

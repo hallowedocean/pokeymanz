@@ -152,6 +152,13 @@ export const POKEYMANZ = {
       weaknesses: ["poison", "steel"],
       color: "#EF70EF",
     },
+    {
+      id: "shadow",
+      immunities: [],
+      resistances: [],
+      weaknesses: [],
+      color: "#4834A0",
+    },
   ].map((type) => ({
     ...type,
     name: `POKEYMANZ.Types.${type.id.capitalize()}`,

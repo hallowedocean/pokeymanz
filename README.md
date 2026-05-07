@@ -36,6 +36,8 @@ Pokeymanz TTRPG was created by [ChronicDelusionist](https://chronicdelusionist.n
 
 Pokemon Type Icons - Vector design by [Lugia-Sea](https://www.deviantart.com/lugia-sea) © 2021 - 2024 Lugia-sea.
 
+Shadow Type Icon by [Lorc](https://game-icons.net/1x1/lorc/spiky-eclipse.html). [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+
 Vector-dice vector design by [Amaruuk](https://ko-fi.com/amaruuk/)
 
 Foundry Virtual Tabletop © Copyright 2023, [Foundry Gaming](https://foundryvtt.com/), LLC. All rights reserved

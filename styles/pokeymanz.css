@@ -793,6 +793,10 @@ header.pokeymanz-sheet-header .sheet-tabs > [data-tab] {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.name-container .flag-icon {
+  max-height: 50px;
+}
+
 .pokeymanz .item-type-fields {
   margin: 0.3rem 0;
 }
