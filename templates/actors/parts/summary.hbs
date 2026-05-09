@@ -165,7 +165,7 @@
                             <img class="roll-icon" src="icons/svg/d20-black.svg" alt="roll-dice">
                         </div>
                     </div>
-                    <div class="move-accordion">
+                    <div class="move-accordion" data-action="toggleExpand">
                         <div class="move-header flex">
                             <div class="move-name">
                                 {{move.name}}
@@ -188,10 +188,10 @@
                             <hr>
                             <div class="move-type-matchups">
                                 <h6 class="move-type-matchups-header">{{localize "POKEYMANZ.TypeMatchups.Label"}}</h6>
-                                {{#if move.moveType.superEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Weaknesses"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.superEffectiveAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
-                                {{#if move.moveType.neutralDamageAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.NormalDamage"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.neutralDamageAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
-                                {{#if move.moveType.notVeryEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Resistances"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.notVeryEffectiveAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
-                                {{#if move.moveType.noEffectAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Immunities"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.noEffectAgainst as |type|}}{{localize type}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}
+                                {{#if move.moveType.superEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Weaknesses"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.superEffectiveAgainst as |type|}}{{type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.neutralDamageAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.NormalDamage"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.neutralDamageAgainst as |type|}}{{type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.notVeryEffectiveAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Resistances"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.notVeryEffectiveAgainst as |type|}}{{type}}{{#unless @last}}, {{/unless}}{{/each}}<br>{{/if}}
+                                {{#if move.moveType.noEffectAgainst}}<span class="move-type-matchup-label">{{localize "POKEYMANZ.TypeMatchups.Immunities"}} {{localize "POKEYMANZ.TypeMatchups.Against"}}:</span> {{#each move.moveType.noEffectAgainst as |type|}}{{type}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}
                             </div>
                         </div>
                     </div>

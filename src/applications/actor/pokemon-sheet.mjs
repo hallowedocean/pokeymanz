@@ -219,7 +219,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     const typeLists = ["superEffectiveAgainst", "neutralDamageAgainst", "notVeryEffectiveAgainst", "noEffectAgainst"];
 
     typeLists.forEach(list => {
-      moveType[list] = moveType[list].map(word => `POKEYMANZ.Types.${word.capitalize()}`).sort();
+      moveType[list] = moveType[list].map(word => game.i18n.localize(word.capitalize())).sort();
     });
 
     return moveType;
