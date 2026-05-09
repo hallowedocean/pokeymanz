@@ -176,6 +176,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
         ...move.toObject(),
         uuid: move.uuid,
         moveType: this._prepareMoveTypeMatchups(move.system.pokemonTypes.primary),
+        diceIcon: `${SYSTEM_CONST.ASSETS_PATH}/dice/d${move.system.roll.faces}.svg`,
         enrichDescription:
           await foundry.applications.ux.TextEditor.implementation.enrichHTML(
             move.system.notes.description,
