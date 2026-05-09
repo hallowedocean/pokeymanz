@@ -415,10 +415,15 @@ section.summary.tab .body-container .details-container {
   text-align: left;
 }
 .move-list .move-container .move-accordion .move-header .move-icons-container .move-dice-container {
-    font-size: 1.7em;
-    position: relative;
-    top: 3px;
-    padding: 0px 5px;
+  font-size: 1.7em;
+  position: relative;
+  top: 3px;
+  padding: 0px 5px;
+}
+.move-list .move-container .move-accordion .move-header .move-icons-container .move-dice-container .move-dice-modifier {
+  padding-left: 5px;
+  position: relative;
+  top: -2px;
 }
 .pokeymanz .info-card .portrait-contianer {
   background: var(--card-color);

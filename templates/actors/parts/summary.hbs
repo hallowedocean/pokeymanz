@@ -180,6 +180,9 @@
                             <div class="move-icons-container flex">
                             <div class="move-dice-container flex">
                                 <i class="glyphter-icon-d{{move.system.roll.faces}}"></i>
+                                {{#if move.system.roll.modifier}}
+                                <span class="move-dice-modifier">{{numberFormat move.system.roll.modifier sign=true}}</span>
+                                {{/if}}
                             </div>
                             <a class="move-menu fix-context-menu aling--right" data-item-uuid="{{move.uuid}}">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
