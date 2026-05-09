@@ -40,10 +40,10 @@
     </ol>
     {{/unless}}
     {{/each}}
-  </div>   
+  </div>  
+  <br> 
 {{/if}}
 
-<br>
 <h3>Notes</h3>
 {{#each notes as |note|}}
   {{formGroup note.field value=note.value enriched=note.enritch toggled=true accordion=true compact=true}}
