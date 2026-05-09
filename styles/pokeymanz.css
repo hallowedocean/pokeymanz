@@ -161,6 +161,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 0.4rem 0.4rem 0;
   justify-content: space-between;
+  align-items: center;
 }
 .move-container .move-accordion .move-header .move-name {
   font-size: 1.2rem;
@@ -412,6 +413,12 @@ section.summary.tab .body-container .details-container {
   padding: 0px 5px;
   overflow: hidden;
   text-align: left;
+}
+.move-list .move-container .move-accordion .move-header .move-icons-container .move-dice-container {
+    font-size: 1.7em;
+    position: relative;
+    top: 3px;
+    padding: 0px 5px;
 }
 .pokeymanz .info-card .portrait-contianer {
   background: var(--card-color);
