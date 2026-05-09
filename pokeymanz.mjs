@@ -6,6 +6,18 @@ import { POKEYMANZ } from "./src/config.mjs";
 import utils from "./src/utils/_module.mjs";
 import * as SYSTEM_CONST from "./src/constants.mjs";
 
+function registerSystemSettings() {
+  game.settings.register("pokeymanz", "shadowPokemonEnabled", {
+    name: "Shadow Pokemon enabled?",
+    hint: "Turn on to enable Shadow Pokemon-related settings",
+    scope: "world",
+    config: true,
+    default: false,
+    type: Boolean,
+    requiresReload: true,
+  });
+}
+
 Hooks.once("init", () => {
   /* Exposing classes and variables */
   CONFIG.POKEYMANZ = POKEYMANZ;
@@ -15,6 +27,19 @@ Hooks.once("init", () => {
     document,
     data,
   };
+
+  registerSystemSettings();
+
+  //if shadow pokemon setting is toggled off, remove shadow from type listing and "isShadow" flag
+  if (!game.settings.get("pokeymanz", "shadowPokemonEnabled")) {
+
+    const index = CONFIG.POKEYMANZ.pokemonTypesList.findIndex(u => u.id === "shadow");
+    if (index !== -1) {
+      CONFIG.POKEYMANZ.pokemonTypesList.splice(index, 1);
+    }
+
+    delete POKEYMANZ.flags.isShadow;
+  }
 
   /*Registering data models*/
   Object.assign(CONFIG.Actor.dataModels, {
