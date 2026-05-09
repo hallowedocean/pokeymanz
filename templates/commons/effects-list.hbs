@@ -36,23 +36,23 @@
                     {{/if}}
                 </div>
                 <div class="item-controls flexrow">
-                    {{#if @root.editable}}
+                    {{#unless ../../isPlayMode}}
                     <a class="item-control" data-action="toggleEffect" {{#if effect.disabled}}
                         data-tooltip="{{localize 'POKEYMANZ.Effect.InactiveEffect' effect=effect.name}}" {{else}}
                         data-tooltip="{{localize 'POKEYMANZ.Effect.ActiveEffect' effect=effect.name}}" {{/if}}>
                         <i class="fas fa-lightbulb{{ifThen effect.disabled '' '-on' }}"></i>
                     </a>
-                    {{/if}}
+                    {{/unless}}
                     <a class="item-control" data-action="viewDoc" data-tooltip="{{localize 'DOCUMENT.Update'
                         type=effect.name }}">
                         <i class="fas fa-edit"></i>
                     </a>
-                    {{#if @root.editable}}
+                    {{#unless ../../isPlayMode}}
                     <a class="item-control" data-action="deleteDoc" data-tooltip="{{localize 'DOCUMENT.Delete'
                         type=effect.name }}">
                         <i class="fas fa-trash"></i>
                     </a>
-                    {{/if}}
+                    {{/unless}}
                 </div>
             </li>
             {{/each}}
