@@ -18,18 +18,6 @@ function registerSystemSettings() {
   });
 }
 
-function registerSystemSettings() {
-  game.settings.register("pokeymanz", "shadowPokemonEnabled", {
-    name: "Shadow Pokemon enabled?",
-    hint: "Turn on to enable Shadow Pokemon-related settings",
-    scope: "world",
-    config: true,
-    default: false,
-    type: Boolean,
-    requiresReload: true,
-  });
-}
-
 Hooks.once("init", () => {
   /* Exposing classes and variables */
   CONFIG.POKEYMANZ = POKEYMANZ;
