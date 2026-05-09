@@ -9,7 +9,7 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
    * Key information about this Actor subtype
    */
   static metadata = Object.freeze({
-    invalidItemTypes: ["feat", "gear"],
+    invalidItemTypes: ["gear"],
   });
 
   static defineSchema() {

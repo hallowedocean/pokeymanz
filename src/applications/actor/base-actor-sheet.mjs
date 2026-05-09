@@ -322,7 +322,15 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
 
     const li = target.closest(".item");
     const { documentClass, docId, effectType } = li.dataset;
-    const doc = this.document.getEmbeddedDocument(documentClass, docId);
+    let doc = this.document.getEmbeddedDocument(documentClass, docId);
+
+    //handles it if the effect is from an ability or other item 
+    if (!doc) {
+      doc = this._prepareEffects();
+      doc = Object.values(doc)
+        .reduce((acc, list) => [...acc, ...list.effects], [])
+        .filter(listItem => listItem.id === docId)[0];
+    }
 
     const effects = Array.from(this.document.effects).sort(
       (a, b) => (a.sort || 0) - (b.sort || 0),
@@ -458,7 +466,15 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
     const li = target.closest(".item");
 
     const { documentClass, docId } = li.dataset;
-    const doc = this.document.getEmbeddedDocument(documentClass, docId);
+    let doc = this.document.getEmbeddedDocument(documentClass, docId);
+
+    //handles it if the effect is from an ability or other item 
+    if (!doc) {
+      doc = this._prepareEffects();
+      doc = Object.values(doc)
+        .reduce((acc, list) => [...acc, ...list.effects], [])
+        .filter(listItem => listItem.id === docId)[0];
+    }
 
     gsap.to(li, {
       height: 0,
@@ -479,7 +495,15 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
     const li = target.closest(".item") ?? target.closest(".pokemon");
 
     const { documentClass, docId } = li.dataset;
-    const doc = this.document.getEmbeddedDocument(documentClass, docId);
+    let doc = this.document.getEmbeddedDocument(documentClass, docId);
+
+    //handles it if the effect is from an ability or other item 
+    if (!doc) {
+      doc = this._prepareEffects();
+      doc = Object.values(doc)
+        .reduce((acc, list) => [...acc, ...list.effects], [])
+        .filter(listItem => listItem.id === docId)[0];
+    }
 
     doc?.sheet?.render(true);
   }

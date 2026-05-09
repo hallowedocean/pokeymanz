@@ -45,6 +45,9 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     summary: {
       template: `${SYSTEM_CONST.TEMPLATES_PATH}/actors/parts/summary.hbs`,
     },
+    features: {
+      template: `${SYSTEM_CONST.TEMPLATES_PATH}/actors/parts/features.hbs`,
+    },
   };
 
   /* -------------------------------------------- */
@@ -61,6 +64,12 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       group: "primary",
       icon: "fa-solid fa-address-card",
       label: "POKEYMANZ.Sheets.TABS.Summary",
+    },
+    {
+      id: "features",
+      group: "primary",
+      icon: "fa-solid fa-list",
+      label: "POKEYMANZ.Sheets.TABS.Features",
     },
     {
       id: "effects",
@@ -119,6 +128,10 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
   async _prepareContext(options) {
     const baseContext = await super._prepareContext(options);
     const { trainer, stats, schema } = this.document.system;
+
+    if (!this.document.system.flags.isIChooseYou.value) {
+      delete baseContext.tabs.features;
+    }
 
     return {
       ...baseContext,

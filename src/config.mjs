@@ -337,6 +337,10 @@ export const POKEYMANZ = {
       label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isShiny",
       img: `${SYSTEM_CONST.ASSETS_PATH}/icons/flags/shiny_icon.png`,
     },
+    isIChooseYou: {
+      label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isIChooseYou",
+      img: `${SYSTEM_CONST.ASSETS_PATH}/icons/flags/ichooseyou_icon.png`,
+    },
   },
   diceSteps: [4, 6, 8, 10, 12],
 };
