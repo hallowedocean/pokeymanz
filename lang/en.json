@@ -101,7 +101,13 @@
                 "Special": "Special",
                 "Status": "Status"
             },
-            "Dice": "Dice Move"
+            "Dice": "Dice Move",
+            "Flags": {
+                "thatOneMove": "That One Move"
+            },
+            "Effects": {
+                "thatOneMoveFailed": "backfired! It cannot be rerolled and a complication arises!"
+            }
         },
         "Actor": {
             "Details": {

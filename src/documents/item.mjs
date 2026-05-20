@@ -80,16 +80,36 @@ export default class PokeymanzItem extends Item {
   async _useMove() {
     const data = this.getRollData();
     const { formula } = data.item.roll;
-    const roll = await Roll.create(formula, data).evaluate();
+    
+    switch (data.item.flags.thatOneMove.value) {
 
-    const rollContente = await roll.render();
+      case true:
+        const thatOneMoveRoll = await Roll.create(data.item.flags.thatOneMove.chanceOfSuccess).evaluate();
+        const failureThreshold = data.item.flags.thatOneMove.chanceOfSuccess.split("d")[0];
+        if (thatOneMoveRoll.result <= failureThreshold) {
+          const rollContent = await thatOneMoveRoll.render();
+          thatOneMoveRoll.toMessage({
+            speaker: ChatMessage.getSpeaker({ actor: this.parent }),
+            flavor: game.i18n.localize(data.item.flags.thatOneMove.label),
+            rollMode: game.settings.get("core", "rollMode"),
+            content: `<p>${this.name} ${game.i18n.localize("POKEYMANZ.Moves.Effects.thatOneMoveFailed")}</p> ${rollContent}`,
+          });
+          
+          break;
+        }
 
-    roll.toMessage({
-      speaker: ChatMessage.getSpeaker({ actor: this.parent }),
-      flavor: this.name,
-      rollMode: game.settings.get("core", "rollMode"),
-      content: `${this.system.notes.description} ${rollContente}`,
-    });
+      default:
+        const roll = await Roll.create(formula, data).evaluate();
+        
+        const rollContente = await roll.render();
+        
+        roll.toMessage({
+          speaker: ChatMessage.getSpeaker({ actor: this.parent }),
+          flavor: this.name,
+          rollMode: game.settings.get("core", "rollMode"),
+          content: `${this.system.notes.description} ${rollContente}`,
+        });
 
+    }
   }
 }

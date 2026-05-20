@@ -824,6 +824,10 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
   max-height: 50px;
 }
 
+.flag-icon-svg {
+  font-size: 35px;
+}
+
 .pokeymanz .item-type-fields {
   margin: 0.3rem 0;
 }

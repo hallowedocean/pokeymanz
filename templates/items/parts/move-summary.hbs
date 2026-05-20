@@ -1,6 +1,11 @@
 <section class="tab summary {{tab.cssClass}}" data-group="primary" data-tab="summary">
+   <div class="name-container flex flex-row items-center">
     <input class="document-name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'Name'}}"
         data-tooltip="{{item.name}}" {{disabled isPlayMode}} />
+        {{#if system.flags.thatOneMove.value}}
+            <i class="fa-solid fa-triangle-exclamation flag-icon-svg" style="color: #f6f648;" data-tooltip="{{localize system.flags.thatOneMove.label}}"></i>
+        {{/if}}
+</div>
     <div class="flex">
         <div class="sidebar-card card flex flex-col items-center gap-sm">
             <div class="portrait">
@@ -69,7 +74,13 @@
                         {{formInput roll.fields.modifier value=roll.modifier}}
                     </div>
                 </div>
-                {{/if}}
+                <div>
+                {{#each system.flags as |flag|}}
+                    <input type="checkbox" name="system.flags.{{@key}}.value" {{checked flag.value}} />
+                    <label>{{localize flag.label}}?</label><br>
+                {{/each}}
+                </div>
+            {{/if}}
             </div>
         </div>
         <div class="body-container flex gap-sm flex-col">

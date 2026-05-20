@@ -28,6 +28,13 @@ export default class MoveData extends foundry.abstract.TypeDataModel {
         description: new NotesHTMLField(),
         gmNotes: new NotesHTMLField(),
       }),
+      flags: new fields.SchemaField({
+        thatOneMove: new fields.SchemaField({
+          value: new fields.BooleanField({ initial: false }),
+          label: new fields.StringField({ initial: "POKEYMANZ.Moves.Flags.thatOneMove" }),
+          chanceOfSuccess: new fields.StringField({ initial: "1d2" }),
+        }),
+      }),
       roll: new AttributeDiceField({ label: "POKEYMANZ.Moves.Dice" }),
     };
   }
