@@ -170,11 +170,11 @@
                             <div class="move-name">
                                 {{move.name}}
                             </div>
-                            {{#if system.flags.thatOneMove.value}}
-                                <div>
-                                    <i class="fa-solid fa-triangle-exclamation flag-icon-svg" style="color: #f6f648;    padding-right: 10px;" data-tooltip="{{localize system.flags.thatOneMove.label}}"></i>
-                                </div>
-                            {{/if}}
+                            {{#each system.flags as |flag|}}
+                                {{#if flag.value}}
+                                <i class="{{flag.icon}} move-flag-icon" data-tooltip="{{localize flag.label}}"></i>
+                                {{/if}}
+                            {{/each}}
                             <div class="move-type">
                                 <div class="type-badge flex size--medium" style="--type-color: {{move.moveType.color}}">
                                     <img src="{{move.moveType.img}}" alt="{{move.moveType.id}}">
@@ -260,14 +260,12 @@
                                 <img src="{{move.moveType.img}}" alt="{{move.moveType.id}}"
                                     data-tooltip="{{move.moveType.name}}">
                                         <span data-tooltip="{{move.name}}">{{move.name}}</span>
-                                        {{#if system.flags.thatOneMove.value}} 
-                                            <div>
-                                                <i class="fa-solid fa-triangle-exclamation" style="color: black; font-size: 18px;" data-tooltip="{{localize system.flags.thatOneMove.label}}"></i>
-                                            </div>
-                                        {{/if}}
-                                    
-                                <img class="dice-icon" src="{{move.system.roll.diceIcon}}"
-                                    data-tooltip="{{move.system.roll.formula}}">
+                                        {{#each system.flags as |flag|}}
+                                            {{#if flag.value}}
+                                            <i class="{{flag.icon}} move-flag-icon" data-tooltip="{{localize flag.label}}"></i>
+                                            {{/if}}
+                                        {{/each}}
+                                <img class="dice-icon" src="{{move.system.roll.diceIcon}}" data-tooltip="{{move.system.roll.formula}}">
                             </a>
                             {{/each}}
                         </div>

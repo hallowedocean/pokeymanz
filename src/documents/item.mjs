@@ -84,8 +84,8 @@ export default class PokeymanzItem extends Item {
     switch (data.item.flags.thatOneMove.value) {
 
       case true:
-        const thatOneMoveRoll = await Roll.create(data.item.flags.thatOneMove.chanceOfSuccess).evaluate();
-        const failureThreshold = data.item.flags.thatOneMove.chanceOfSuccess.split("d")[0];
+        const thatOneMoveRoll = await Roll.create(data.item.flags.thatOneMove.formula).evaluate();
+        const failureThreshold = data.item.flags.thatOneMove.formula.split("d")[0];
         if (thatOneMoveRoll.result <= failureThreshold) {
           const rollContent = await thatOneMoveRoll.render();
           thatOneMoveRoll.toMessage({

@@ -30,9 +30,10 @@ export default class MoveData extends foundry.abstract.TypeDataModel {
       }),
       flags: new fields.SchemaField({
         thatOneMove: new fields.SchemaField({
-          value: new fields.BooleanField({ initial: false }),
           label: new fields.StringField({ initial: "POKEYMANZ.Moves.Flags.thatOneMove" }),
-          chanceOfSuccess: new fields.StringField({ initial: "1d2" }),
+          icon: new fields.StringField({ initial: "fa-solid fa-triangle-exclamation" }),
+          value: new fields.BooleanField({ initial: false }),
+          formula: new fields.StringField({ initial: "1d2" }),
         }),
       }),
       roll: new AttributeDiceField({ label: "POKEYMANZ.Moves.Dice" }),

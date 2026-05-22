@@ -102,6 +102,7 @@
                 "Status": "Status"
             },
             "Dice": "Dice Move",
+            "Formula": "Formula",
             "Flags": {
                 "thatOneMove": "That One Move"
             },

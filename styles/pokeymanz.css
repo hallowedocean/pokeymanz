@@ -824,8 +824,23 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
   max-height: 50px;
 }
 
-.flag-icon-svg {
-  font-size: 35px;
+.name-container .move-flag-icon {
+  font-size: 2.5rem;
+  padding-right: 5px;
+}
+
+.move-container .move-accordion .move-header .move-flag-icon {
+  font-size: 24px;
+  padding-right: 5px;
+}
+
+.pokemon-list .pokemon-card .card-containter .card-content .move-button .move-flag-icon {
+  color: black;
+  font-size: 18px;
+}
+
+.fa-triangle-exclamation {
+  color: #ebca23;
 }
 
 .pokeymanz .item-type-fields {
