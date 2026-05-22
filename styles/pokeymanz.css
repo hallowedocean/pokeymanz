@@ -494,7 +494,7 @@ section.summary.tab .body-container .details-container {
   filter: invert(1);
 }
 .pokeymanz .info-card .card-containter .card-content .move-button span {
-  text-shadow: 0 0 5px black;
+  text-shadow: 0 0 3px black, 0 0 5px black;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -935,7 +935,7 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
   border: 3px solid white;
   box-shadow: 0 0 0.2rem;
   border-radius: 25px;
-  text-shadow: 0 0 3px black;
+  text-shadow: 0 0 3px black, 0 0 2px black;
   transition: transform 300ms ease, filter 300ms ease, box-shadow 300ms ease;
   filter: saturate(0.7);
   transform: scale(0.9);
