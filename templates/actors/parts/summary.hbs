@@ -184,7 +184,7 @@
                             </div>
                             <div class="move-icons-container flex">
                             <div class="move-dice-container flex">
-                                <i class="glyphter-icon-d{{move.system.roll.faces}}"></i>
+                                <i class="glyphter-icon-d{{move.system.roll.faces}}" data-tooltip="d{{move.system.roll.faces}}"></i>
                                 {{#if move.system.roll.modifier}}
                                 <span class="move-dice-modifier">{{numberFormat move.system.roll.modifier sign=true}}</span>
                                 {{/if}}
