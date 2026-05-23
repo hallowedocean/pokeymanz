@@ -116,7 +116,9 @@
                     {{/if}}
                 </div>
                 {{#if (and isGM (not isPlayMode))}}
-                <div> 
+                <div class="options-container">
+                    <hr>
+                    <h6 class="options-header">{{localize "POKEYMANZ.Options"}}</h6>
                     {{#each system.flags as |flag|}}
                     <input type="checkbox" name="system.flags.{{@key}}.value" {{checked flag.value}} />
                     <label>{{localize flag.label}}?</label><br>

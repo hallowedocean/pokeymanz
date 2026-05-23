@@ -996,6 +996,17 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
   font-size: 1.7em;
 }
 
+.options-container hr {
+  margin: 10px 0px;
+}
+
+h6.options-header {
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.4em;
+  margin-top: 0px;
+}
 .evolution-container .input-group-label {
   min-width: max-content;
 }

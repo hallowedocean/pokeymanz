@@ -214,6 +214,7 @@
         "Description": "Description",
         "GMNotes": "GM Notes",
         "Category": "Category",
-        "Type": "Type"   
+        "Type": "Type",
+        "Options": "Options"
     }
 }
