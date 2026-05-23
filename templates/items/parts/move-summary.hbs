@@ -29,6 +29,7 @@
                 {{formInput
                 categoryField.field
                 value=categoryField.value
+                classes="input-group-field"
                 localize=true
                 }}
                 {{/if}}
@@ -50,6 +51,7 @@
                     "POKEYMANZ.Type"}}</label>
                 {{formInput pokemonType.primary.field
                 value=pokemonType.primary.value
+                classes="input-group-field"
                 localize=true}}
             </div>
             {{/if}}
@@ -70,10 +72,10 @@
                         {{roll.label}}
                     </label>
                     <div class="rollable-dice-side">
-                        {{formInput roll.fields.faces value=roll.faces}}
+                        {{formInput roll.fields.faces value=roll.faces classes="input-group-field"}}
                     </div>
                     <div class="rollable-dice-mod">
-                        {{formInput roll.fields.modifier value=roll.modifier}}
+                        {{formInput roll.fields.modifier value=roll.modifier classes="input-group-field"}}
                     </div>
                 </div>
                 <div class="options-container">
@@ -85,7 +87,7 @@
                     {{#if (and flag.value flag.formula)}}
                     <div class="flex items-center input-group">
                         <label class="input-group-label">{{localize "POKEYMANZ.Moves.Formula"}}</label>
-                        <input type="text" name="system.flags.{{@key}}.formula" value={{flag.formula}}>
+                        <input type="text" class="input-group-field" name="system.flags.{{@key}}.formula" value={{flag.formula}}>
                     </div>
                     <br>
                     {{/if}}
