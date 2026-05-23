@@ -261,7 +261,7 @@ section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input {
   border: 0;
   text-align: center;
   color: white;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.3);
   line-height: 0;
 }
 section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input:focus, section.summary.tab .sidebar-card .stat-bar .stat-container .stat-input:hover {
