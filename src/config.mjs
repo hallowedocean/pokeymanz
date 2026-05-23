@@ -314,6 +314,7 @@ export const POKEYMANZ = {
           subtypes: {
             standard: "POKEYMANZ.ItemSubtypes.Ability.Standard",
             megaEvolved: "POKEYMANZ.ItemSubtypes.Ability.MegaEvolved",
+            hidden: "POKEYMANZ.ItemSubtypes.Ability.Hidden",
           },
         },
       }, 
