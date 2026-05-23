@@ -329,6 +329,13 @@ export const POKEYMANZ = {
     extremeWeaknesses: "POKEYMANZ.TypeMatchups.ExtremeWeaknesses",
     extremeResistances: "POKEYMANZ.TypeMatchups.ExtremeResistances",
   },
+  evolutionPossible: {
+    doesNotEvolve: "POKEYMANZ.Actor.Advancement.EvolutionPossible.DoesNotEvolve", 
+    notPossibleNow: "POKEYMANZ.Actor.Advancement.EvolutionPossible.NotPossibleNow", 
+    canEvolveOnce: "POKEYMANZ.Actor.Advancement.EvolutionPossible.CanEvolveOnce", 
+    canEvolveTwice: "POKEYMANZ.Actor.Advancement.EvolutionPossible.CanEvolveTwice", 
+    noFurther: "POKEYMANZ.Actor.Advancement.EvolutionPossible.NoFurther",
+  },
   flags: {
     isShadow: {
       label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isShadow",

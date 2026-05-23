@@ -48,6 +48,9 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     features: {
       template: `${SYSTEM_CONST.TEMPLATES_PATH}/actors/parts/features.hbs`,
     },
+    advancement: {
+      template: `${SYSTEM_CONST.TEMPLATES_PATH}/actors/parts/advancement.hbs`,
+    },
   };
 
   /* -------------------------------------------- */
@@ -70,6 +73,12 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       group: "primary",
       icon: "fa-solid fa-list",
       label: "POKEYMANZ.Sheets.TABS.Features",
+    },
+    {
+      id: "advancement",
+      group: "primary",
+      icon: "fa-solid fa-arrow-trend-up",
+      label: "POKEYMANZ.Sheets.TABS.Advancement",
     },
     {
       id: "effects",
@@ -150,6 +159,9 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
         field: schema.getField("trainer.value"),
         inTeam: trainer.inTeam,
       },
+      evolution: {
+        field: schema.getField("advancement.evolutionPossible"),
+      },
       moves: await this._prepareMoves(),
     };
   }
@@ -160,12 +172,32 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
       case "summary":
         basePartContext.abilityFields = this._prepareAbility();
         break;
+      case "advancement":
+        basePartContext.expLog = await this._prepareEXPLog(context);
+        break;
       case "notes":
         basePartContext.typeMatchupLists = this._preparetypeMatchupLists();
       default:
         break;
     }
     return basePartContext;
+  }
+
+  async _prepareEXPLog() {
+    const TextEditor = foundry.applications.ux.TextEditor.implementation;
+    const { system } = this.document;
+    console.log("system", system);
+    console.log(system.schema.getField("advancement.expSpent"));
+  
+    return {
+      field: system.schema.getField("advancement.expSpent"),
+      value: system.advancement.expSpent,
+      enritch: await TextEditor.enrichHTML(system.advancement.expSpent, {
+        secrets: this.document.isOwner,
+        relativeTo: this.document,
+        rollData: this.document.getRollData?.() ?? {},
+      }),
+    };
   }
 
   async _prepareMoves() {

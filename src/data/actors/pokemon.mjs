@@ -73,6 +73,11 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       value: new fields.ForeignDocumentField(foundry.documents.BaseActor),
       inTeam: new fields.BooleanField({ initial: false }),
     });
+    schema.advancement = new fields.SchemaField({
+      evolutionPossible: new fields.StringField({ choices: CONFIG.POKEYMANZ.evolutionPossible, blank: true, required: false, initial: "" }),
+      evolutionConditions: new fields.StringField({ initial: "" }),
+      expSpent: new NotesHTMLField(),
+    });
     schema.propierties = new fields.SchemaField({
       maxMoves: new fields.NumberField({ initial: 4, integer: true, min: 0, required: true }),
     });

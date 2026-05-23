@@ -120,6 +120,23 @@
                 "Pronouns": "Pronouns",
                 "Age": "Age",
                 "Exp": "EXP"
+            },
+            "Advancement": {
+                "Evolution": "Evolution",
+                "EvolutionPossible": {
+                    "Label": "Evolution Possible",
+                    "DoesNotEvolve": "Does not evolve", 
+                    "NotPossibleNow": "Not possible now", 
+                    "CanEvolveOnce": "Can evolve once", 
+                    "CanEvolveTwice": "Can evolve twice", 
+                    "NoFurther": "No further"
+                },
+                "EvolutionConditions": "Evolution Conditions",
+                "EXPTracking": {
+                    "Label": "EXP Tracking",
+                    "Description": "Use the box below to log the amount of EXP spent on this Pokemon and which move or stat it was used on.",
+                    "EXPLog": "EXP Log"
+                }
             }
         },
         "Sheets": {
@@ -128,6 +145,7 @@
                 "Features": "Features",
                 "Inventory": "Inventory",
                 "Pokemon": "Pokemon",
+                "Advancement": "Advancement",
                 "Effects": "Effects",
                 "Notes": "Notes"
             }

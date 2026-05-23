@@ -64,7 +64,8 @@
       },
       "pokemon": {
         "htmlFields": [
-          "notes.pokedexEntry"
+          "notes.pokedexEntry",
+          "advancement.expSpent"
         ]
       }
     },

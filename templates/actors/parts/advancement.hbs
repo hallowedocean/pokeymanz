@@ -1,0 +1,26 @@
+<section class="tab effects {{tab.cssClass}}" data-group="primary" data-tab="advancement">
+  <h3>{{localize "POKEYMANZ.Actor.Advancement.Evolution"}}</h3>
+    <div class="flex flex-col gap-sm evolution-container">
+        <div class="flex items-center input-group">
+            <label class="input-group-label">{{localize "POKEYMANZ.Actor.Advancement.EvolutionPossible.Label"}}</label>
+            {{formInput evolution.field value=system.advancement.evolutionPossible localize=true classes="input-group-field" disabled=isPlayMode}}
+        </div>
+        {{#if (or (eq system.advancement.evolutionPossible "notPossibleNow") (eq system.advancement.evolutionPossible "canEvolveOnce") (eq system.advancement.evolutionPossible "canEvolveTwice"))}}
+            <div class="flex items-center input-group">
+                <label class="input-group-label">{{localize "POKEYMANZ.Actor.Advancement.EvolutionConditions"}}</label>
+                <input class="input-group-field evolution-field" type="text" name="system.advancement.evolutionConditions" value="{{system.advancement.evolutionConditions}}" {{disabled isPlayMode}}>
+            </div>
+        {{/if}}
+    </div>
+    <br>
+
+  <h3>{{localize "POKEYMANZ.Actor.Advancement.EXPTracking.Label"}}</h3>
+{{localize "POKEYMANZ.Actor.Advancement.EXPTracking.Description"}}
+<div class="exp-log-container">
+        <div class="exp-log-header"><label>{{localize "POKEYMANZ.Actor.Advancement.EXPTracking.EXPLog"}}</label></div>
+        <div class="exp-log-field">
+            {{formInput expLog.field value=expLog.value enriched=expLog.enritch toggled=true}}
+        </div>
+    </div>
+
+</section>
