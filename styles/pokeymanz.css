@@ -826,12 +826,12 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
 
 .name-container .move-flag-icon {
   font-size: 2.5rem;
-  padding-right: 5px;
+  padding: 0px 5px;
 }
 
 .move-container .move-accordion .move-header .move-flag-icon {
   font-size: 24px;
-  padding-right: 5px;
+  padding: 0px 5px;
 }
 
 .pokemon-list .pokemon-card .card-containter .card-content .move-button .move-flag-icon {
