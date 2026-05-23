@@ -5,15 +5,14 @@
             <div class="item-name flexrow">
                  <label class="input-group-label">{{section.label}}</label>
             </div>
-            <div class="item-controls">
-                {{#if ../isPlayMode}}
-                {{else}}
+                {{#unless ../isPlayMode}}
+                <div class="item-controls">
                 <a class="item-control" data-action="createDoc" data-document-class="Item" data-type="ability"
                     data-system-type="{{sid}}" data-tooltip="{{localize 'DOCUMENT.New' type='Ability' }}">
                     <i class="fas fa-plus"></i>
                 </a>
-                {{/if}}
-            </div>
+                </div>
+                {{/unless}}
         </li>
         <ol class="item-list spacing--p-0 spacing--m-0">
             {{#if section.items}}
@@ -25,8 +24,7 @@
                         <div>{{localize item.system.subtype.label}}</div>
                     </div>
                     <div class="item-controls flexrow">
-                        {{#if ../../isPlayMode}}
-                        {{else}}
+                        {{#unless ../../isPlayMode}}
                         <a class="item-control" data-action="viewDoc" data-tooltip="{{localize 'DOCUMENT.Update'
                             type=item.name }}">
                             <i class="fas fa-edit"></i>
@@ -35,7 +33,7 @@
                             type=item.name }}">
                             <i class="fas fa-trash"></i>
                         </a>
-                        {{/if}}
+                        {{/unless}}
                     </div>
                 </li>
                 <li class="ability-item flexrow" data-doc-id="{{item.id}}" data-document-class="Item" data-drag="true">
@@ -44,7 +42,6 @@
                     </div>
                 </li>
                 {{/each}}
-            {{else}}
             {{/if}}
         </ol>
         {{/each}}
