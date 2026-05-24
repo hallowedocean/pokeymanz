@@ -9,8 +9,13 @@
                 <div class="toughtness-container stat-container flex items-center">
                     <i class="stat-icon fa-solid fa-shield"></i>
                     <label class="stat-label">{{localize "POKEYMANZ.Stats.Toughness"}}</label>
+                    {{#if isPlayMode}}
                     <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
                         value="{{system.stats.toughness.value}}" {{disabled isPlayMode }}>
+                    {{else}}
+                    <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
+                        value="{{@root.source.system.stats.toughness.value}}" {{disabled isPlayMode }}>
+                    {{/if}}
                 </div>
                 <div class="wounds-container stat-container flex items-center">
                     <i class="stat-icon fa-solid fa-heart"></i>
