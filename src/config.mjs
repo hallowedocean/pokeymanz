@@ -351,7 +351,7 @@ export const POKEYMANZ = {
     },
     isZeroMinor: {
       label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isZeroMinor",
-      img: "",
+      img: `${SYSTEM_CONST.ASSETS_PATH}/icons/flags/zerominor_icon.png`,
     },
   },
   diceSteps: [4, 6, 8, 10, 12],
