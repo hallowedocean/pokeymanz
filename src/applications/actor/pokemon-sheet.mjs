@@ -186,8 +186,6 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
   async _prepareEXPLog() {
     const TextEditor = foundry.applications.ux.TextEditor.implementation;
     const { system } = this.document;
-    console.log("system", system);
-    console.log(system.schema.getField("advancement.expSpent"));
   
     return {
       field: system.schema.getField("advancement.expSpent"),
