@@ -21,28 +21,29 @@ This project is licensed under the [MIT License](LICENSE).
 
 My initial goal was to ensure the system has the minimum fields needed to run the game. I plan to use this system to run my own games and may add more features later.
 
-## Credits
-Developed by: 
--[JoaquinP](https://github.com/joaquinpereyra98)
-📧 joaquinpereyra98@gmail.com  
-💬 Discord: joaquinp98
--and myself!
-
 ## Changes from base Pokeymanz system
 I have made changes to the data structure and implemented new features:
 - Added functionality: 
-    -Trainers: 
-        -Implemented EXP field.
-        -Basic auto-calculation for Toughness (Fitness / 2).
-    -Pokemon: 
-        -Implemented Abilities, Mastery, EXP tracking (via a text box), Evolution status, and Fury (for Shadow Pokemon).
-        -Support for "Hidden Ability" edge and an additional ability upon Mega Evolution.
-        -Auto-calculation of type matchups. Defensive type matchups can be viewed on the Notes tab of the Pokemon's sheet and offensive type matchups can be viewed on the Summary tab of the Pokemon's sheet (click on the move name and look below the move description).
-        -Support for flags that designate Shadow Pokemon, Shiny Pokemon, and the "I Choose You" Edge and "Zero" Minor Hindrance. Flags can be toggled on or off by a GM via the sidebar on the Summary tab of the Pokemon's sheet (while in edit mode).
-        -Support for "That One Move" Hindrance, which can be toggled on or off by a GM via the sidebar on the move's sheet (while in edit mode). The dice formula for success can also be customized (on the move sheet, just below the flag checkbox) and is 1d2 by default. When the flag is toggled on, a triangular warning icon appears next to the move's name and the roll for success/failure automatically occurs.
-    -Optional support for Shadow Pokemon, which can be toggled on/off in Game Settings > Configure Settings > Pokeymanz TTRPG. When toggled on, a flag becomes available for Pokemon (which displays an icon and switches Mastery to Fury) and "Shadow" is added to the type list (for move type selection and type matchup calculation).
--Trainer and Pokemon sheets should now have all fields needed to play the game!
+    - Trainers: 
+        - Implemented EXP field.
+        - Basic auto-calculation for Toughness (Fitness / 2).
+    - Pokemon: 
+        - Implemented Abilities, Mastery, EXP tracking (via a text box), Evolution status, and Fury (for Shadow Pokemon).
+        - Support for "Hidden Ability" edge and an additional ability upon Mega Evolution.
+        - Auto-calculation of type matchups. Defensive type matchups can be viewed on the Notes tab of the Pokemon's sheet and offensive type matchups can be viewed on the Summary tab of the Pokemon's sheet (click on the move name and look below the move description).
+        - Support for flags that designate Shadow Pokemon, Shiny Pokemon, and the "I Choose You" Edge and "Zero" Minor Hindrance. Flags can be toggled on or off by a GM via the sidebar on the Summary tab of the Pokemon's sheet (while in edit mode).
+        - Support for "That One Move" Hindrance, which can be toggled on or off by a GM via the sidebar on the move's sheet (while in edit mode). The dice formula for success can also be customized (on the move sheet, just below the flag checkbox) and is 1d2 by default. When the flag is toggled on, a triangular warning icon appears next to the move's name and the roll for success/failure automatically occurs.
+    - Optional support for Shadow Pokemon, which can be toggled on/off in Game Settings > Configure Settings > Pokeymanz TTRPG. When toggled on, a flag becomes available for Pokemon (which displays an icon and switches Mastery to Fury) and "Shadow" is added to the type list (for move type selection and type matchup calculation).
+    - Trainer and Pokemon sheets should now have all fields needed to play the game!
 - Misc. bug fixes and changes to better align with the game system's rules and improve QOL.
+
+
+## Credits
+Developed by: 
+- [JoaquinP](https://github.com/joaquinpereyra98)
+📧 joaquinpereyra98@gmail.com  
+💬 Discord: joaquinp98
+- and myself!
 
 Pokeymanz TTRPG was created by [ChronicDelusionist](https://chronicdelusionist.neocities.org/Pokeymanz). [CC BY 4.0 Deed](https://creativecommons.org/licenses/by/4.0/).
 
