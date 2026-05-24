@@ -28,7 +28,8 @@
                 "flags": {
                     "isShadow": "Shadow Pokemon",
                     "isShiny": "Shiny Pokemon",
-                    "isIChooseYou": "I Choose You (Edge)"
+                    "isIChooseYou": "I Choose You (Edge)",
+                    "isZeroMinor": "Zero (Minor Hindrance)"
                 }
             }
         },

@@ -138,7 +138,7 @@ export default class PokemonSheet extends InteractiveUIFeaturesMixin(
     const baseContext = await super._prepareContext(options);
     const { trainer, stats, schema } = this.document.system;
 
-    if (!this.document.system.flags.isIChooseYou.value) {
+    if (!this.document.system.flags.isIChooseYou.value && !this.document.system.flags.isZeroMinor.value) {
       delete baseContext.tabs.features;
     }
 

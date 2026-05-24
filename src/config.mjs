@@ -349,6 +349,10 @@ export const POKEYMANZ = {
       label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isIChooseYou",
       img: `${SYSTEM_CONST.ASSETS_PATH}/icons/flags/ichooseyou_icon.png`,
     },
+    isZeroMinor: {
+      label: "POKEYMANZ.BASE_ACTOR.FIELDS.flags.isZeroMinor",
+      img: "",
+    },
   },
   diceSteps: [4, 6, 8, 10, 12],
 };
