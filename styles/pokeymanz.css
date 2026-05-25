@@ -397,7 +397,7 @@ section.summary.tab .body-container {
   margin-left: 10px;
 }
 section.summary.tab .body-container .details-container {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .ability-container {
   align-items: center;
