@@ -1169,6 +1169,7 @@ h6.options-header {
   background-color: var(--pokeymanz-color-ui-red);
 }
 .pokeymanz.sheet section.window-content {
+  margin-top: -1px;
   padding: 0;
   overflow: auto;
   scrollbar-color: var(--pokeymanz-color-ui-red) rgba(0, 0, 0, 0.3);
