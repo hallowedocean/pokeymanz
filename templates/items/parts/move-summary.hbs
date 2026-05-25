@@ -1,13 +1,13 @@
 <section class="tab summary {{tab.cssClass}}" data-group="primary" data-tab="summary">
    <div class="name-container flex flex-row items-center">
-    <input class="document-name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'Name'}}"
+        <input class="document-name" name="name" type="text" value="{{item.name}}" placeholder="{{localize 'Name'}}"
         data-tooltip="{{item.name}}" {{disabled isPlayMode}} />
         {{#each system.flags as |flag|}}
             {{#if flag.value}}
-            <i class="{{flag.icon}} move-flag-icon" data-tooltip="{{localize flag.label}}"></i>
+                <i class="{{flag.icon}} move-flag-icon" data-tooltip="{{localize flag.label}}"></i>
             {{/if}}
         {{/each}}
-</div>
+    </div>
     <div class="flex">
         <div class="sidebar-card card flex flex-col items-center gap-sm">
             <div class="portrait">
@@ -16,33 +16,33 @@
             </div>
             <div class="input-group flex items-center">
                 {{#if isPlayMode}}
-                <label class="input-group-label">{{localize
-                    "POKEYMANZ.Category"}}</label>
-                {{#if categoryField.img}}
-                <img class="input-group-img" src="{{categoryField.img}}" alt="{{categoryField.value}}">
+                    <label class="input-group-label">{{localize
+                        "POKEYMANZ.Category"}}</label>
+                    {{#if categoryField.img}}
+                        <img class="input-group-img" src="{{categoryField.img}}" alt="{{categoryField.value}}">
+                    {{else}}
+                        <label class="input-group-label">None</label>
+                    {{/if}}
                 {{else}}
-                <label class="input-group-label">None</label>
-                {{/if}}
-                {{else}}
-                <label class="input-group-label">{{localize
-                    "POKEYMANZ.Category"}}</label>
-                {{formInput
-                categoryField.field
-                value=categoryField.value
-                classes="input-group-field"
-                localize=true
-                }}
+                    <label class="input-group-label">{{localize
+                        "POKEYMANZ.Category"}}</label>
+                    {{formInput
+                    categoryField.field
+                    value=categoryField.value
+                    classes="input-group-field"
+                    localize=true
+                    }}
                 {{/if}}
             </div>
             {{#if isPlayMode}}
             <div class="flex items-center">
                 {{!-- TYPE BADGE --}}
                 {{#if pokemonType.primary.value}}
-                <div class="type-badge flex items-center size--medium"
+                    <div class="type-badge flex items-center size--medium"
                     style="--type-color: {{pokemonType.primary.color}}">
-                    <img src="{{pokemonType.primary.img}}" alt="{{pokemonType.primary.id}}">
-                    <span>{{localize pokemonType.primary.name}}</span>
-                </div>
+                        <img src="{{pokemonType.primary.img}}" alt="{{pokemonType.primary.id}}">
+                        <span>{{localize pokemonType.primary.name}}</span>
+                    </div>
                 {{/if}}
             </div>
             {{else}}
@@ -55,18 +55,17 @@
                 localize=true}}
             </div>
             {{/if}}
-            <div>
-                {{#if isPlayMode}}
-                <a class="rollable-button flex-col" data-action="roll" data-roll="move">
-                    <label class="rollable-label flex">
-                        {{roll.label}}
-                    </label>
-                    <div class="rollable-frame flex justify-center">
-                        <img src="systems/pokeymanz/assets/dice/d{{roll.faces}}.svg" alt="{{roll.faces.sides}}">
-                        {{numberFormat roll.modifier sign=true}}
-                    </div>
-                </a>
-                {{else}}
+            {{#if isPlayMode}}
+            <a class="rollable-button flex-col" data-action="roll" data-roll="move">
+                <label class="rollable-label flex">
+                    {{roll.label}}
+                </label>
+                <div class="rollable-frame flex justify-center">
+                    <img src="systems/pokeymanz/assets/dice/d{{roll.faces}}.svg" alt="{{roll.faces.sides}}">
+                    {{numberFormat roll.modifier sign=true}}
+                </div>
+            </a>
+            {{else}}
                 <div class="rollable-inputs gap-sm">
                     <label class="rollable-label">
                         {{roll.label}}
@@ -77,24 +76,51 @@
                     <div class="rollable-dice-mod">
                         {{formInput roll.fields.modifier value=roll.modifier classes="input-group-field"}}
                     </div>
-                </div>
-                <div class="options-container">
-                <hr>
-                <h6 class="options-header">{{localize "POKEYMANZ.Options"}}</h6>
-                {{#each system.flags as |flag|}}
-                    <input type="checkbox" name="system.flags.{{@key}}.value" {{checked flag.value}} />
-                    <label>{{localize flag.label}}?</label><br>
-                    {{#if (and flag.value flag.formula)}}
-                    <div class="flex items-center input-group">
-                        <label class="input-group-label">{{localize "POKEYMANZ.Moves.Formula"}}</label>
-                        <input type="text" class="input-group-field" name="system.flags.{{@key}}.formula" value={{flag.formula}}>
-                    </div>
-                    <br>
+                    {{#if isGM}}
+                        <div class="flex">
+                            {{formInput roll.fields.altCritThreshold.fields.enabled value=roll.altCritThreshold.enabled classes="input-group-field"}}
+                            <label class="rollable-label">
+                            {{localize "POKEYMANZ.Moves.LowerCriticalThreshold"}}
+                            </label>
+                        </div>
+                        {{#if roll.altCritThreshold.enabled}}
+                        <div class="rollable-dice-mod">
+                            {{formInput roll.fields.altCritThreshold.fields.value choices=roll.altCritThresholdOptions value=roll.altCritThreshold.value classes="input-group-field"}}
+                        </div>
+                        {{/if}}
                     {{/if}}
-                {{/each}}
                 </div>
             {{/if}}
-            </div>
+            {{#if isPlayMode}}
+                {{#if roll.altCritThreshold.enabled}}
+                <div class="input-group flex items-center">
+                    <label class="input-group-label">
+                        {{localize "POKEYMANZ.Moves.CriticalHit"}}
+                    </label>
+                    <label class="input-group-label">
+                        {{lookup roll.altCritThresholdOptions roll.altCritThreshold.value}}
+                    </label>
+                </div>
+                {{/if}}
+            {{else}}
+                {{#if isGM}}
+                <div class="options-container">
+                    <hr>
+                    <h6 class="options-header">{{localize "POKEYMANZ.Options"}}</h6>
+                    {{#each system.flags as |flag|}}
+                        <input type="checkbox" name="system.flags.{{@key}}.value" {{checked flag.value}} />
+                        <label>{{localize flag.label}}?</label><br>
+                        {{#if (and flag.value flag.formula)}}
+                        <div class="flex items-center input-group">
+                            <label class="input-group-label">{{localize "POKEYMANZ.Moves.Formula"}}</label>
+                            <input type="text" class="input-group-field" name="system.flags.{{@key}}.formula" value={{flag.formula}}>
+                        </div>
+                        <br>
+                        {{/if}}
+                    {{/each}}
+                </div>
+                {{/if}}
+            {{/if}}
         </div>
         <div class="body-container flex gap-sm flex-col">
             {{#each notes as |note|}}

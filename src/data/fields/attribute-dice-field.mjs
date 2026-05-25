@@ -24,6 +24,14 @@ class AttributeDiceData extends DataModel {
         }, {}),
       }),
       modifier: new fields.NumberField({ initial: 0, required: false, integer: true }),
+      altCritThreshold: new fields.SchemaField({
+        enabled: new fields.BooleanField({ initial: false, required: true, blank: false, nullable: false }),
+        value: new fields.NumberField({ 
+          initial: null,
+          nullable: true,
+          choices: [-1, -2],
+        }),
+      }),
     };
   }
 
@@ -36,7 +44,7 @@ class AttributeDiceData extends DataModel {
     return game.i18n.localize(this.schema.label);
   }
 
-  _diceFormulaPart = `1d${this.faces}x`;
+  _diceFormulaPart = this.altCritThreshold.enabled ? `1d${this.faces}x>=${this.faces + this.altCritThreshold.value}` : `1d${this.faces}x`;
 
   get diceIcon() {
     return `${SYSTEM_CONST.ASSETS_PATH}/dice/d${this.faces}.svg`;

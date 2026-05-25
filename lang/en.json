@@ -105,6 +105,9 @@
             },
             "Dice": "Dice Move",
             "Formula": "Formula",
+            "LowerCriticalThreshold": "Lower Critical Threshold?",
+            "CriticalHit": "Critical Hit",
+            "OrHigher": "or higher",
             "Flags": {
                 "thatOneMove": "That One Move"
             },

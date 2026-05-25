@@ -80,6 +80,7 @@ export default class BaseItemSheet extends HandlebarsApplicationMixin(
   async _prepareContext(options) {
     return {
       editable: this.isEditable,
+      isGM: game.user.isGM,
       item: this.document,
       actor: this.document.parent,
       system: this.document.system,

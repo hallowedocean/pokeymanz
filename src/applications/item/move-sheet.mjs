@@ -61,6 +61,11 @@ export default class MoveSheet extends InteractiveUIFeaturesMixin(
   /** @override */
   async _prepareContext(options) {
     const baseContext = await super._prepareContext(options);
+    const altCritThresholdOptions = baseContext.system.roll.altCritThreshold.enabled ? baseContext.system.roll.schema.fields.altCritThreshold.fields.value.choices.reduce((acc, value) => {
+      acc[value] = `${baseContext.system.roll.faces + value} ${game.i18n.localize("POKEYMANZ.Moves.OrHigher")}`;
+      return acc;
+    }, {}) : {};
+
     return {
       ...baseContext,
       categoryField: this._prepareCategory(),
@@ -68,6 +73,8 @@ export default class MoveSheet extends InteractiveUIFeaturesMixin(
       roll: {
         faces: baseContext.system.roll.faces,
         modifier: baseContext.system.roll.modifier,
+        altCritThreshold: baseContext.system.roll.altCritThreshold,
+        altCritThresholdOptions: altCritThresholdOptions,
         icon: baseContext.system.roll.diceIcon,
         label: baseContext.system.roll.label,
         fields: baseContext.system.roll.schema.fields,
