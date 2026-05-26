@@ -263,6 +263,25 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(
 
     return notes;
   }
+
+  // async _onRender(context, options) {
+  //   await super._onRender(context, options);
+  //   this.#disableOverrides();
+  // }
+
+  // /**
+  //  * Disables inputs subject to active effects.
+  //  */
+  // #disableOverrides() {
+  //   const flatOverrides = foundry.utils.flattenObject(this.actor.overrides);
+  //   for (const override of Object.keys(flatOverrides)) {
+  //     const input = this.element.querySelector(`[name="${override}"]`);
+  //     if (input) {
+  //       input.disabled = true;
+  //     }
+  //   }
+  // }
+
   /* -------------------------------------------- */
   /*  Animations Handlers                         */
   /* -------------------------------------------- */

@@ -53,6 +53,9 @@
             "Tactics": "Tactics"
         },
         "Stats": {
+            "Bonus": "Bonus",
+            "Current": "Current",
+            "Maximum": "Maximum",
             "Toughness": "Toughness",
             "Wounds": "Wounds",
             "Mastery": "Mastery",

@@ -13,8 +13,15 @@
                     <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
                         value="{{system.stats.toughness.value}}" {{disabled isPlayMode }}>
                     {{else}}
-                    <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
-                        value="{{@root.source.system.stats.toughness.value}}" {{disabled isPlayMode }}>
+                        {{#if (eq actor.type "trainer")}}
+                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
+                            value="{{system.stats.toughness.value}}" data-tooltip={{localize "POKEYMANZ.Stats.Toughness"}} disabled=true>
+                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.bonus"
+                            value="{{@root.source.system.stats.toughness.bonus}}" data-tooltip='{{localize "POKEYMANZ.Stats.Toughness"}} {{localize "POKEYMANZ.Stats.Bonus"}}' {{disabled isPlayMode }}>
+                        {{else}}
+                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
+                            value="{{@root.source.system.stats.toughness.value}}" data-tooltip='{{localize "POKEYMANZ.Stats.Toughness"}}' {{disabled isPlayMode }}>
+                        {{/if}} 
                     {{/if}}
                 </div>
                 <div class="wounds-container stat-container flex items-center">
@@ -23,10 +30,10 @@
                     <div class="wound-input-container flex">
                         <a data-action="adjustStat" data-sub-action="wounds-minus"><i class="adjust-icon fa-regular fa-square-minus"></i></a>
                         <input class="stat-input spacing--p-0" type="number" name="system.stats.wounds.value"
-                            value="{{system.stats.wounds.value}}" {{disabled isPlayMode }}>
+                            value="{{@root.source.system.stats.wounds.value}}" data-tooltip='{{localize "POKEYMANZ.Stats.Current"}} {{localize "POKEYMANZ.Stats.Wounds"}}' {{disabled isPlayMode }}>
                         <span>/</span>
                         <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.wounds.max"
-                            value="{{system.stats.wounds.max}}" {{disabled isPlayMode }}>
+                            value="{{@root.source.system.stats.wounds.max}}" data-tooltip='{{localize "POKEYMANZ.Stats.Maximum"}} {{localize "POKEYMANZ.Stats.Wounds"}}' {{disabled isPlayMode }}>
                         <a data-action="adjustStat" data-sub-action="wounds-plus"><i class="adjust-icon fa-regular fa-square-plus"></i></a>
                     </div>
                 </div>
@@ -37,10 +44,10 @@
                         <label class="stat-label">{{localize "POKEYMANZ.Stats.Fury"}}</label>
                         <div class="fury-input-container flex">
                             <input class="stat-input spacing--p-0" type="number" name="system.stats.fury.value"
-                                value="{{system.stats.fury.value}}" {{disabled isPlayMode }}>
+                                value="{{@root.source.system.stats.fury.value}}" data-tooltip='{{localize "POKEYMANZ.Stats.Current"}} {{localize "POKEYMANZ.Stats.Fury"}}' {{disabled (or isPlayMode (not isGM)) }}>
                             <span>/</span>
                             <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.fury.max"
-                            value="{{system.stats.fury.max}}" {{disabled isPlayMode }}>
+                            value="{{@root.source.system.stats.fury.max}}" data-tooltip='{{localize "POKEYMANZ.Stats.Maximum"}} {{localize "POKEYMANZ.Stats.Fury"}}' {{disabled (or isPlayMode (not isGM)) }}>
                         </div>
                     </div>
                     {{else}}
@@ -50,10 +57,10 @@
                         <div class="mastery-input-container flex">
                             <a data-action="adjustStat" data-sub-action="mastery-minus"><i class="adjust-icon fa-regular fa-square-minus"></i></a>
                             <input class="stat-input spacing--p-0" type="number" name="system.stats.mastery.value"
-                                value="{{system.stats.mastery.value}}" min="0" {{disabled isPlayMode }}>
+                                value="{{@root.source.system.stats.mastery.value}}" min="0" data-tooltip='{{localize "POKEYMANZ.Stats.Current"}} {{localize "POKEYMANZ.Stats.Mastery"}}' {{disabled isPlayMode }}>
                             <span>/</span>
                             <input class="stat-input stat-max spacing--p-0" type="number" name="system.stats.mastery.max"
-                            value="{{system.stats.mastery.max}}" {{disabled isPlayMode }}>
+                            value="{{@root.source.system.stats.mastery.max}}" data-tooltip='{{localize "POKEYMANZ.Stats.Maximum"}} {{localize "POKEYMANZ.Stats.Mastery"}}' {{disabled isPlayMode }}>
                             <a data-action="adjustStat" data-sub-action="mastery-plus"><i class="adjust-icon fa-regular fa-square-plus"></i></a>
                         </div>
                     </div>
@@ -147,7 +154,7 @@
             </div>
             <div class="flex details-container gap-sm">
                 {{#each detailsFields as |field|}}
-                <div class="input-group flex items-center size--{{field.size}}" data-tooltip="{{field.value}}">
+                <div class="input-group flex items-center size--{{field.size}}">
                     <label class="input-group-label">{{field.label}}</label>
                     <input class="input-group-field" type="{{field.type}}" name="{{field.name}}" value="{{field.value}}"
                         {{disabled ../isPlayMode }}>
