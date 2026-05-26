@@ -397,7 +397,7 @@ section.summary.tab .body-container {
   margin-left: 10px;
 }
 section.summary.tab .body-container .details-container {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .ability-container {
   align-items: center;
@@ -882,6 +882,9 @@ section.tab.notes .type-matchups-container ol.items-list ol.item-list {
   max-width: 12rem;
 }
 .pokeymanz div.input-group.size--large {
+  flex-basis: 50%;
+}
+.pokeymanz div.input-group.size--xlarge {
   flex-basis: 100%;
 }
 .pokeymanz div.input-group input.input-group-field {

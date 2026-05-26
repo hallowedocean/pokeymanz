@@ -48,8 +48,8 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
         }),
       }),
       details: new fields.SchemaField({
-        calling: new fields.StringField({ initial: "", size: "large" }),
-        pronouns: new fields.StringField({ initial: "", size: "medium" }),
+        calling: new fields.StringField({ initial: "", size: "xlarge" }),
+        pronouns: new fields.StringField({ initial: "", size: "large" }),
         age: new fields.NumberField({ integer: true, size: "xsmall" }),
         exp: new fields.NumberField({ integer: true, size: "xsmall" }),
       }),

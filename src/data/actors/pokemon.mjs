@@ -62,9 +62,9 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       return acc;
     }, {}));
     schema.details = new fields.SchemaField({
-      species: new fields.StringField({ initial: "", size: "" }),
-      gender: new fields.StringField({ initial: "", size: "xsmall" }),
-      variant: new fields.StringField({ initial: "", size: "medium" }),
+      species: new fields.StringField({ initial: "", size: "xlarge" }),
+      gender: new fields.StringField({ initial: "", size: "small" }),
+      variant: new fields.StringField({ initial: "", size: "large" }),
     });
     schema.notes = new fields.SchemaField({
       pokedexEntry: new NotesHTMLField(),
