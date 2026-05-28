@@ -22,50 +22,60 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
 
   static defineSchema() {
     const fields = foundry.data.fields;
-    return {
-      attributes: new fields.SchemaField(
-        ["heart", "fitness", "research", "tactics"].reduce((acc, v) => {
-          acc[v] = new AttributeDiceField({ label: `POKEYMANZ.Attributes.${v.capitalize()}` });
-          return acc;
-        }, {}),
-      ),
-      stats: new fields.SchemaField({
-        toughness: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 2, integer: true, nullable: false, required: true }),
-          bonus: new fields.NumberField({ initial: 0, integer: true, nullable: false, required: true }),
+    const schema = {};
+
+    schema.attributes = new fields.SchemaField(
+      ["heart", "fitness", "research", "tactics"].reduce((acc, v) => {
+        acc[v] = new AttributeDiceField({ label: `POKEYMANZ.Attributes.${v.capitalize()}` });
+        return acc;
+      }, {}),
+    );
+
+    schema.stats = new fields.SchemaField({
+      toughness: new fields.SchemaField({
+        value: new fields.NumberField({ initial: (schema) => {
+          return schema.attributes.fitness.faces / 2; 
+        }, integer: true, nullable: false, required: true }),
+        bonus: new fields.NumberField({ initial: 0, integer: true, nullable: false, required: true }),
+      }),
+      pokemonTypes: new fields.SchemaField({
+        primary: new fields.SchemaField({
+          value: pokemonTypeFields(),
         }),
-        pokemonTypes: new fields.SchemaField({
-          primary: new fields.SchemaField({
-            value: pokemonTypeFields(),
-          }),
-          secondary: new fields.SchemaField({
-            value: pokemonTypeFields(),
-          }),
-        }),
-        wounds: new fields.SchemaField({
-          value: new fields.NumberField({ initial: 0 }),
-          max: new fields.NumberField({ initial: 3 }),
+        secondary: new fields.SchemaField({
+          value: pokemonTypeFields(),
         }),
       }),
-      details: new fields.SchemaField({
-        calling: new fields.StringField({ initial: "", size: "xlarge" }),
-        pronouns: new fields.StringField({ initial: "", size: "large" }),
-        age: new fields.NumberField({ integer: true, size: "xsmall" }),
-        exp: new fields.NumberField({ integer: true, size: "xsmall" }),
+      wounds: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0 }),
+        max: new fields.NumberField({ initial: 3 }),
       }),
-      currency: new fields.NumberField({
-        initial: 0,
-        integer: true,
-        size: "xsmall",
-      }),
-      notes: new fields.SchemaField({
-        biography: new NotesHTMLField(),
-      }),
-      team: new fields.SetField(new fields.DocumentUUIDField({ type: "Actor", embedded: false })),
-      propierties: new fields.SchemaField({
-        maxMoves: new fields.NumberField({ initial: 0, integer: true, min: 0, required: true }),
-      }),
-    };
+    });
+      
+    schema.details = new fields.SchemaField({
+      calling: new fields.StringField({ initial: "", size: "xlarge" }),
+      pronouns: new fields.StringField({ initial: "", size: "large" }),
+      age: new fields.NumberField({ integer: true, size: "xsmall" }),
+      exp: new fields.NumberField({ integer: true, size: "xsmall" }),
+    });
+
+    schema.currency = new fields.NumberField({
+      initial: 0,
+      integer: true,
+      size: "xsmall",
+    });
+
+    schema.notes = new fields.SchemaField({
+      biography: new NotesHTMLField(),
+    });
+
+    schema.team = new fields.SetField(new fields.DocumentUUIDField({ type: "Actor", embedded: false }));
+
+    schema.propierties = new fields.SchemaField({
+      maxMoves: new fields.NumberField({ initial: 0, integer: true, min: 0, required: true }),
+    });
+    
+    return schema;
   }
 
   /* -------------------------------------------- */
@@ -85,7 +95,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
       attribute.name = `POKEYMANZ.Attributes.${key.capitalize()}`;
     }
 
-    this.stats.toughness.value = (this.attributes.fitness.faces / 2) + this.stats.toughness.bonus;
+    this.stats.toughness.value = this.stats.toughness.value + this.stats.toughness.bonus;
   }
 
   /* -------------------------------------------- */
