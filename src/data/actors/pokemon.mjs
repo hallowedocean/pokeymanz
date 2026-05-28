@@ -28,6 +28,7 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
       exp: new fields.NumberField({ initial: 0 }),
       toughness: new fields.SchemaField({
         value: new fields.NumberField({ initial: 4, integer: true }),
+        bonus: new fields.NumberField({ initial: 0, integer: true, nullable: false, required: true }),
       }),
       pokemonTypes: new fields.SchemaField({
         primary: new fields.SchemaField({
@@ -106,6 +107,8 @@ export default class PokemonData extends foundry.abstract.TypeDataModel {
     }
 
     this.prepareTypeMatchups();
+    
+    this.stats.toughness.value = this.stats.toughness.value + this.stats.toughness.bonus;
   }
 
   /* -------------------------------------------- */
