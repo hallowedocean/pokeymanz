@@ -7,21 +7,20 @@
             </div>
             <div class="stat-bar flex">
                 <div class="toughtness-container stat-container flex items-center">
-                    <i class="stat-icon fa-solid fa-shield"></i>
-                    <label class="stat-label">{{localize "POKEYMANZ.Stats.Toughness"}}</label>
+                    
                     {{#if isPlayMode}}
+                     <i class="stat-icon fa-solid fa-shield"></i>
+                    <label class="stat-label">{{localize "POKEYMANZ.Stats.Toughness"}}</label>
                     <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
                         value="{{system.stats.toughness.value}}" {{disabled isPlayMode }}>
                     {{else}}
-                        {{#if (eq actor.type "trainer")}}
-                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
-                            value="{{system.stats.toughness.value}}" data-tooltip={{localize "POKEYMANZ.Stats.Toughness"}} disabled=true>
-                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.bonus"
-                            value="{{@root.source.system.stats.toughness.bonus}}" data-tooltip='{{localize "POKEYMANZ.Stats.Toughness"}} {{localize "POKEYMANZ.Stats.Bonus"}}' {{disabled isPlayMode }}>
-                        {{else}}
+                        <i class="stat-icon fa-solid fa-shield"></i>
+                        <label class="stat-label">{{localize "POKEYMANZ.Stats.Toughness"}}</label>
                         <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.value"
                             value="{{@root.source.system.stats.toughness.value}}" data-tooltip='{{localize "POKEYMANZ.Stats.Toughness"}}' {{disabled isPlayMode }}>
-                        {{/if}} 
+                        <i class="fa-solid fa-plus"></i>
+                        <input class="stat-input spacing--p-0" type="number" name="system.stats.toughness.bonus"
+                            value="{{@root.source.system.stats.toughness.bonus}}" data-tooltip='{{localize "POKEYMANZ.Stats.Toughness"}} {{localize "POKEYMANZ.Stats.Bonus"}}' {{disabled isPlayMode }}>
                     {{/if}}
                 </div>
                 <div class="wounds-container stat-container flex items-center">
