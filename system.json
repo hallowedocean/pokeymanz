@@ -2,7 +2,7 @@
   "id": "pokeymanz",
   "title": "Pokeymanz TTRPG",
   "description": "A FoundryVTT system for PokeymanzTTRPG, pokemon fan-made tabletop RPG",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "compatibility": {
     "minimum": "13",
     "verified": "13.345"
@@ -101,5 +101,5 @@
   },
   "url": "https://github.com/hallowedocean/pokeymanz",
   "manifest": "https://github.com/hallowedocean/pokeymanz/releases/latest/download/system.json",
-  "download": "https://github.com/hallowedocean/pokeymanz/releases/download/0.5.0/pokeymanz-0.5.0.zip"
+  "download": "https://github.com/hallowedocean/pokeymanz/releases/download/0.5.1/pokeymanz-0.5.1.zip"
 }
