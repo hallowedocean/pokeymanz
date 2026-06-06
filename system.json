@@ -2,7 +2,7 @@
   "id": "pokeymanz",
   "title": "Pokeymanz TTRPG",
   "description": "A FoundryVTT system for PokeymanzTTRPG, pokemon fan-made tabletop RPG",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "compatibility": {
     "minimum": "13",
     "verified": "13.345"
