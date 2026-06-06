@@ -33,9 +33,7 @@ export default class TrainerData extends foundry.abstract.TypeDataModel {
 
     schema.stats = new fields.SchemaField({
       toughness: new fields.SchemaField({
-        value: new fields.NumberField({ initial: (schema) => {
-          return schema.attributes.fitness.faces / 2; 
-        }, integer: true, nullable: false, required: true }),
+        value: new fields.NumberField({ initial: 2, integer: true, nullable: false, required: true }),
         bonus: new fields.NumberField({ initial: 0, integer: true, nullable: false, required: true }),
       }),
       pokemonTypes: new fields.SchemaField({
